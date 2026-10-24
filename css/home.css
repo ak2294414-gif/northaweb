@@ -246,7 +246,3 @@
 @media (max-width: 420px) {
   .sol-cards-grid { grid-template-columns: 1fr; }
 }
-
-/* ── Solution card as button (popup trigger) ── */
-.sol-home-card { cursor: pointer; }
-.sol-home-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }

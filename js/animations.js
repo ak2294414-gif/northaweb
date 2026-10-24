@@ -96,14 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initProgressBar();
   initBackToTop();
-  /* Re-run after dynamic content (solution pages render via JS) */
-  setTimeout(() => {
-    initScrollAnimations();
-    initCardGlow();
-    initCounters();
-  }, 500);
-  setTimeout(() => {
-    initScrollAnimations();
-    initCardGlow();
-  }, 1200);
+  // Re-run glow after dynamic content loads
+  setTimeout(() => initCardGlow(), 800);
 });

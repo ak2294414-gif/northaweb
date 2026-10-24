@@ -1,5 +1,5 @@
 /* ============================================================
-   NorthWeb Co. — Homepage JavaScript
+   NorthWeb Co. — Homepage JavaScript (V5)
    ============================================================ */
 
 const HOME_SOLUTIONS = [
@@ -17,9 +17,43 @@ const HOME_SOLUTIONS = [
   { key: 'hotel',      icon: '🏨', title: 'Hotel / Homestay / PG', desc: 'Room listings, amenities, booking inquiry',                price: 'From ₹17,999', accent: '#1D4ED8' },
 ];
 
-/* Only live demos shown */
 const HOME_DEMOS = [
   { key: 'showcase', icon: '🛍️', title: 'Collection Showcase Website', type: 'Clothing Store — Live Demo', live: true, url: 'https://domeweb.shop/', urlLabel: 'domeweb.shop' },
+];
+
+const FAQ_DATA = [
+  {
+    q: 'How much does a website cost?',
+    a: 'Our websites start from ₹5,999 for a Portfolio site and go up to ₹29,999+ for an E-commerce store. Every solution page shows a clear starting price. Final cost depends on add-ons you choose (SEO, gallery, booking system, etc.). No hidden fees.'
+  },
+  {
+    q: 'How long does it take to build my website?',
+    a: 'Most websites are delivered in 7–14 days from the day you share your content (logo, photos, text). Simple sites like Portfolio and Showcase can be done in 5–7 days. E-commerce stores may take 14–21 days depending on how many products need to be added.'
+  },
+  {
+    q: 'Will my website work on mobile phones?',
+    a: 'Yes — every website we build is designed mobile-first. Over 85% of customers in Northeast India browse on phones, so we build for mobile first and then scale up for desktops. Your site will look and work perfectly on any screen size.'
+  },
+  {
+    q: 'Do I need to provide content (photos, text)?',
+    a: 'Yes — you\'ll need to share your business name, contact details, services/products, and any photos you want to use. If you don\'t have good photos, we can suggest free sources or guide you on taking better photos with your phone.'
+  },
+  {
+    q: 'Will my website show up on Google?',
+    a: 'Every website we build includes basic on-page SEO — meta titles, descriptions, structured data (Schema), and a sitemap. This gives Google everything it needs to index your site. For ongoing ranking improvement, we have a dedicated SEO Add-On service.'
+  },
+  {
+    q: 'What happens after the website goes live?',
+    a: 'After launch, we give you 30 days of free minor edits (text changes, photo updates). For bigger changes, we offer affordable monthly maintenance plans. You also get full access to your website files so you\'re never locked in.'
+  },
+  {
+    q: 'Do you provide hosting and domain?',
+    a: 'We guide you on getting your own domain (₹800–₹1,500/year) and hosting (₹2,000–₹5,000/year). We recommend keeping them in your own name — you own everything. We can also handle the setup for you if you prefer.'
+  },
+  {
+    q: 'Can I see examples of your work?',
+    a: 'Yes — check out our live demo at domeweb.shop (a clothing store website we built). We\'re building more demos actively. During your consultation, Ankur can also show you relevant examples from similar businesses.'
+  },
 ];
 
 /* ---------- RENDER SOLUTION CARDS ---------- */
@@ -27,7 +61,7 @@ function renderSolutionCards() {
   const grid = document.getElementById('solutionsGrid');
   if (!grid) return;
   grid.innerHTML = HOME_SOLUTIONS.map(s => `
-    <div class="sol-home-card" style="--card-accent:${s.accent}" onclick="openPopup('${s.key}')" role="button" tabindex="0">
+    <div class="sol-home-card" style="--card-accent:${s.accent}" onclick="openPopup('${s.key}')" role="button" tabindex="0" aria-label="${s.title}">
       <span class="shc-icon">${s.icon}</span>
       <div class="shc-title">${s.title}</div>
       <div class="shc-desc">${s.desc}</div>
@@ -57,39 +91,12 @@ function renderDemoGrid() {
     </div>`).join('');
 }
 
-// DOMContentLoaded handled at bottom of file
-
-/* ---------- FAQ ---------- */
-const FAQS = [
-  { q: 'How much does a website cost?', a: 'Prices start from ₹5,999 for a basic portfolio site. Most business websites range from ₹7,999–₹17,999 for setup, plus a monthly hosting fee starting at ₹1,499/mo. You see the full price before committing — no hidden charges.' },
-  { q: 'How long does it take to build?', a: 'Most websites are delivered in 7–14 days after we receive your content and requirements. Complex projects (e-commerce, booking systems) may take up to 21 days. We give you a real timeline before we start.' },
-  { q: 'Do I need to pay anything upfront?', a: 'The consultation is completely free. Once you decide to proceed, we take 50% upfront and the remaining 50% when the site is ready to go live. No payment until you're satisfied.' },
-  { q: 'What if I don\'t have content or photos?', a: 'No problem. We can work with whatever you have — even WhatsApp photos and a voice note describing your business. We handle the rest: writing, layout, and structure.' },
-  { q: 'Will my website work on mobile phones?', a: 'Yes — every website we build is mobile-first. Over 80% of your customers browse on phones, so mobile performance is our top priority on every project.' },
-  { q: 'What happens after the website goes live?', a: 'We hand over everything — hosting access, files, and guidance. The monthly plan includes uptime monitoring, minor updates, and WhatsApp support. You\'re never left alone after launch.' },
-  { q: 'Can you help me rank on Google?', a: 'Every website includes basic SEO: proper headings, meta tags, fast loading, mobile-first, and local schema markup. For ongoing Google ranking, we also offer an SEO Add-On service.' },
-  { q: 'Do you serve businesses outside Guwahati?', a: 'Yes — we serve all of Northeast India. Dibrugarh, Jorhat, Silchar, Shillong, Imphal, Agartala and beyond. Everything is done online via WhatsApp and video calls.' },
-];
-
-function renderFAQ() {
-  const grid = document.getElementById('faqGrid');
-  if (!grid) return;
-  grid.innerHTML = FAQS.map((f, i) => `
-    <div class="faq-item" id="faq-${i}">
-      <button class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}" onclick="toggleFAQ(${i})">
-        <span>${f.q}</span>
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a" id="faq-a-${i}" role="region">${f.a}</div>
-    </div>
-  `).join('');
-}
+/* ---------- RENDER FAQ ---------- */
 
 function toggleFAQ(i) {
   const item = document.getElementById(`faq-${i}`);
   const btn = item.querySelector('.faq-q');
   const isOpen = item.classList.contains('open');
-  // Close all
   document.querySelectorAll('.faq-item').forEach(el => {
     el.classList.remove('open');
     el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
@@ -100,13 +107,150 @@ function toggleFAQ(i) {
   }
 }
 
+function renderFAQ() {
+  const grid = document.getElementById('faqGrid');
+  if (!grid) return;
+  grid.innerHTML = FAQ_DATA.map((item, i) => `
+    <div class="faq-item" id="faq-${i}">
+      <button class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}">
+        ${item.q}
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-a" id="faq-a-${i}" role="region">${item.a}</div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      grid.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      // Open this one if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+/* ---------- SCROLL ANIMATIONS (Intersection Observer) ---------- */
+function initScrollAnimations() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('anim-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.anim-hidden').forEach(el => io.observe(el));
+}
+
+/* ---------- CARD CURSOR GLOW EFFECT (CSS var approach — no offset bug) ---------- */
+function initCardGlow() {
+  const SELECTORS = '.sol-home-card, .t-card, .demo-card, .faq-item, .city-card, .whyus-card';
+  document.querySelectorAll(SELECTORS).forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+      card.classList.add('glow-active');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('glow-active');
+    });
+  });
+}
+
+/* ---------- SCROLL PROGRESS BAR ---------- */
+function initScrollProgress() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const st = document.documentElement.scrollTop;
+    const sh = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (sh > 0 ? (st / sh) * 100 : 0) + '%';
+  }, { passive: true });
+}
+
+/* ---------- BACK TO TOP ---------- */
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ---------- STATS COUNTER ANIMATION ---------- */
+function initStatsCounter() {
+  const nums = document.querySelectorAll('.stat-num[data-target]');
+  if (!nums.length) return;
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const prefix = el.textContent.replace(/[0-9]+.*/, ''); // e.g. "₹"
+      let start = 0;
+      const duration = 1200;
+      const step = duration / target;
+      const timer = setInterval(() => {
+        start += Math.ceil(target / (duration / 16));
+        if (start >= target) {
+          el.textContent = prefix + target + suffix;
+          clearInterval(timer);
+        } else {
+          el.textContent = prefix + start + suffix;
+        }
+      }, 16);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  nums.forEach(n => io.observe(n));
+}
+
+/* ---------- URGENCY BANNER CLOSE ---------- */
+function initUrgencyBanner() {
+  const btn = document.getElementById('urgencyClose');
+  const banner = document.getElementById('urgency-banner');
+  if (!btn || !banner) return;
+  // Don't show again for 24h
+  if (sessionStorage.getItem('nw-urgency-closed')) {
+    banner.style.display = 'none';
+    return;
+  }
+  btn.addEventListener('click', () => {
+    banner.style.display = 'none';
+    sessionStorage.setItem('nw-urgency-closed', '1');
+  });
+}
+
+/* ---------- INIT ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   renderSolutionCards();
   renderDemoGrid();
   renderFAQ();
-  // Re-init card glow after dynamic render
-  if (typeof initCardGlow === 'function') setTimeout(initCardGlow, 300);
-  if (typeof initCounters === 'function') setTimeout(initCounters, 100);
+
+  // Small delay so DOM is fully painted before observing
+  requestAnimationFrame(() => {
+    initScrollAnimations();
+    initCardGlow();
+    initScrollProgress();
+    initBackToTop();
+    initStatsCounter();
+    initUrgencyBanner();
+  });
 });
 
 /* ---------- GLASSMORPHISM QUICK-VIEW POPUP ---------- */
@@ -123,6 +267,7 @@ const SOL_DETAILS = {
   medical:    { features: ['Doctor profiles','Appointment booking','Services listing','Timing & location','Insurance info','Patient reviews'] },
   event:      { features: ['RSVP system','Countdown timer','Event schedule','Photo gallery','Package pricing','WhatsApp RSVP'] },
   hotel:      { features: ['Room listings','Amenities showcase','Booking inquiry','Photo gallery','Location & map','WhatsApp booking'] },
+  seo:        { features: ['Keyword research','On-page SEO','Google Search Console','Monthly report','Local citations','Competitor analysis'] },
 };
 
 function openPopup(key) {
@@ -143,7 +288,7 @@ function openPopup(key) {
     <button class="gp-close" onclick="closePopup()" aria-label="Close">✕</button>
     <span class="gp-icon">${sol.icon}</span>
     <div class="gp-title">${sol.title}</div>
-    <div class="gp-price">${sol.price} · Monthly from ₹1,499/mo</div>
+    <div class="gp-price">${sol.price} setup · Monthly from ₹999/mo</div>
     <ul class="gp-features">${det.features.map(f => `<li>${f}</li>`).join('')}</ul>
     <div class="gp-btns">
       <a href="pages/solutions/${key}.html" class="gp-btn-secondary">Full Details →</a>

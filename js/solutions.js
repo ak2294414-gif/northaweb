@@ -54,14 +54,14 @@ const ADDONS = {
     ]
   },
   portfolio: {
-    base: { setup: 5999, monthly: 999 },
+    base: { setup: 5999, monthly: 0 },
     addons: [
       { id:'extra_projects', label:'Extra Portfolio Items', icon:'🖼️', desc:'Beyond base 30 items (per 10 extra)', type:'stepper', step:10, min:0, priceSetup:399, priceMonthly:0, unit:'items', baseVal:0 },
-      { id:'password_projects', label:'Password-Protected Projects', icon:'🔒', desc:'Show private client work securely', type:'toggle', priceSetup:999, priceMonthly:0 },
-      { id:'contact_booking', label:'Booking / Inquiry Calendar', icon:'📅', desc:'Clients book your time directly from site', type:'toggle', priceSetup:1499, priceMonthly:0 },
-      { id:'testimonials', label:'Client Testimonials Section', icon:'⭐', desc:'Reviews with photo & project link', type:'toggle', priceSetup:499, priceMonthly:0 },
-      { id:'cv_download', label:'CV / Resume Download', icon:'📄', desc:'One-click PDF download of your resume', type:'toggle', priceSetup:299, priceMonthly:0 },
-      { id:'seo', label:'Local SEO Add-On', icon:'🔍', desc:'Get found by clients searching in your city', type:'toggle', priceSetup:0, priceMonthly:3999, tag:'+₹3,999/mo' },
+      { id:'password_projects', label:'Password-Protected Projects', icon:'🔒', desc:'Show private client work securely — clients get a password', type:'toggle', priceSetup:999, priceMonthly:0 },
+      { id:'contact_form', label:'Contact / Inquiry Form', icon:'📬', desc:'Simple form so clients can reach you from your site', type:'toggle', priceSetup:0, priceMonthly:0, default:true, locked:true, tag:'FREE' },
+      { id:'testimonials', label:'Client Testimonials Section', icon:'⭐', desc:'Reviews with photo & project link for social proof', type:'toggle', priceSetup:499, priceMonthly:0 },
+      { id:'cv_download', label:'CV / Resume Download', icon:'📄', desc:'One-click PDF download of your resume for recruiters', type:'toggle', priceSetup:299, priceMonthly:0 },
+      { id:'multilang', label:'Bilingual (English + Bengali/Assamese)', icon:'🇮🇳', desc:'Site in 2 languages — toggle for local reach', type:'toggle', priceSetup:1999, priceMonthly:0 },
     ]
   },
   realestate: {
@@ -155,7 +155,7 @@ const SOLUTIONS = {
     icon: '🛍️', accent: '#0052CC',
     seoDesc: 'Get a fast, mobile-first collection showcase website for your store. NorthWeb Co. builds product display websites for businesses across Assam and Northeast India.',
     forBusinesses: ['Clothing stores & boutiques','Jewellery shops','Handicraft sellers','Electronics dealers','Home decor & furniture','Gift shops','Book stores','Art galleries','Any business with products to display'],
-    features: ['Product gallery with categories & filters','Mobile-optimised product cards','WhatsApp "Ask About This" button per product','Business info & contact section','Google Maps embed','Photo gallery / lookbook section','Google-friendly page structure','Fast loading — no heavy frameworks','Up to 40 products, 3 categories'],
+    features: ['Product gallery with categories & filters','Mobile-optimised product cards','WhatsApp "Ask About This" button per product','Business info & contact section','Google Maps embed','Photo gallery / lookbook section','SEO-ready page structure','Fast loading — no heavy frameworks','Up to 40 products, 3 categories'],
     setup: '₹7,999', monthly: '₹1,499/month',
     includes: ['Up to 40 products','3 product categories','WhatsApp integration','Contact & location section','Mobile responsive','2 free revision rounds','Delivery in 7–10 days'],
     serviceKey: 'showcase', demo: 'https://domeweb.shop/', demoLabel: 'View Live Demo',
@@ -197,8 +197,8 @@ const SOLUTIONS = {
     seoDesc: 'Get a clean, fast portfolio website to showcase your work and attract clients. NorthWeb Co. builds portfolio sites for creatives across Assam and Northeast India.',
     forBusinesses: ['Photographers & videographers','Graphic & UI designers','Architects & interior designers','Makeup artists & stylists','Writers & content creators','Freelancers & consultants','Artists & illustrators'],
     features: ['Work / project gallery (grid or masonry)','About & skills / expertise section','Client testimonials','Contact & inquiry form','Social media links','Downloadable CV option','Clean, minimal design','Fast loading — great first impression','Mobile responsive'],
-    setup: '₹5,999', monthly: '₹999/month',
-    includes: ['Up to 30 portfolio items','About & skills section','Contact form','Social links','Mobile responsive','2 free revision rounds','Delivery in 5–8 days'],
+    setup: '₹5,999', monthly: null, oneTime: true,
+    includes: ['Up to 30 portfolio items','About & skills section','Contact form','Social links','1 year domain FREE (then ~₹800/yr)','Lifetime free hosting','Mobile responsive','2 free revision rounds','Delivery in 5–8 days'],
     serviceKey: 'portfolio', demo: null, related: ['business','showcase','salon']
   },
   realestate: {
@@ -319,8 +319,10 @@ function calcRender() {
   const cfg = ADDONS[key];
   if (!cfg) return;
 
+  const sol = SOLUTIONS[key];
+  const isOneTime = !!(sol && sol.oneTime);
   let totalSetup   = cfg.base.setup;
-  let totalMonthly = cfg.base.monthly;
+  let totalMonthly = isOneTime ? 0 : cfg.base.monthly;
   const lines = [];
 
   cfg.addons.forEach(a => {
@@ -357,7 +359,10 @@ function calcRender() {
   const btnEl   = document.getElementById('cr-book-btn');
 
   if (setupEl)   setupEl.textContent = '₹' + totalSetup.toLocaleString('en-IN');
-  if (mEl)       mEl.textContent     = '₹' + totalMonthly.toLocaleString('en-IN') + '/mo';
+  if (mEl) {
+    if (isOneTime) { const mBlock = mEl.closest ? mEl.closest('.cpro-price-block') : null; if (mBlock) mBlock.style.display = 'none'; }
+    else mEl.textContent = '₹' + totalMonthly.toLocaleString('en-IN') + '/mo';
+  }
   if (bdEl)      bdEl.innerHTML      = lines.length
     ? lines.map(l => `<li>${l}</li>`).join('')
     : '<li>Base plan — no add-ons selected</li>';
@@ -428,8 +433,27 @@ function buildCalculatorHTML(key) {
     }
   }).join('');
 
-  return `
-<section class="sol-section cpro-section" id="pricingCalc" style="--sol-accent:${sol.accent}; background: linear-gradient(145deg, #060d1f 0%, #0a1628 50%, #060d1f 100%) !important;">
+  const isOneTime = !!(sol.oneTime);
+  const basePillText = isOneTime
+    ? `Base: <strong>₹\${cfg.base.setup.toLocaleString('en-IN')}</strong> one-time`
+    : `Base: <strong>₹\${cfg.base.setup.toLocaleString('en-IN')}</strong> + ₹\${cfg.base.monthly.toLocaleString('en-IN')}/mo`;
+
+  const monthlyRow = isOneTime ? '' : \`
+          <div class="cpro-divider"></div>
+          <div class="cpro-price-block">
+            <div class="cpro-price-label">Monthly <span class="cpro-mandatory-chip">MANDATORY</span></div>
+            <div class="cpro-price-val cpro-price-monthly" id="cr-monthly">₹\${cfg.base.monthly.toLocaleString('en-IN')}/mo</div>
+          </div>\`;
+
+  const domainRow = isOneTime ? \`
+          <div class="cpro-divider"></div>
+          <div style="background:rgba(22,163,74,.12);border-radius:8px;padding:.7rem .9rem;font-size:.78rem;color:#14532D;">
+            <strong>✅ 1 year domain FREE</strong> — renewal ~₹800/yr after<br>
+            <strong>✅ Lifetime hosting FREE</strong> — no hosting fee ever
+          </div>\` : '';
+
+  return \`
+<section class="sol-section cpro-section" id="pricingCalc" style="--sol-accent:\${sol.accent}; background: linear-gradient(145deg, #060d1f 0%, #0a1628 50%, #060d1f 100%) !important;">
   <div class="sol-section-inner">
     <div class="section-eyebrow" style="color:rgba(255,255,255,.55)">Build Your Package</div>
     <div class="cpro-header-row">
@@ -437,13 +461,13 @@ function buildCalculatorHTML(key) {
         <h2 style="color:#fff">Customise & see your price live</h2>
         <p class="cpro-subtitle">Toggle features on or off — your total updates instantly</p>
       </div>
-      <div class="cpro-base-pill">Base: <strong>₹${cfg.base.setup.toLocaleString('en-IN')}</strong> + ₹${cfg.base.monthly.toLocaleString('en-IN')}/mo</div>
+      <div class="cpro-base-pill">\${basePillText}</div>
     </div>
 
     <div class="cpro-layout">
       <!-- Add-ons grid -->
       <div class="cpro-addons">
-        ${addonCards}
+        \${addonCards}
       </div>
 
       <!-- Live price summary -->
@@ -453,16 +477,12 @@ function buildCalculatorHTML(key) {
           <div class="cpro-sum-title">Your Package</div>
 
           <div class="cpro-price-block">
-            <div class="cpro-price-label">One-time Setup</div>
-            <div class="cpro-price-val" id="cr-setup">₹${cfg.base.setup.toLocaleString('en-IN')}</div>
+            <div class="cpro-price-label">\${isOneTime ? 'One-time Setup — No Monthly Fee' : 'One-time Setup'}</div>
+            <div class="cpro-price-val" id="cr-setup">₹\${cfg.base.setup.toLocaleString('en-IN')}</div>
           </div>
 
-          <div class="cpro-divider"></div>
-
-          <div class="cpro-price-block">
-            <div class="cpro-price-label">Monthly <span class="cpro-mandatory-chip">MANDATORY</span></div>
-            <div class="cpro-price-val cpro-price-monthly" id="cr-monthly">₹${cfg.base.monthly.toLocaleString('en-IN')}/mo</div>
-          </div>
+          \${monthlyRow}
+          \${domainRow}
 
           <div class="cpro-divider"></div>
 
@@ -472,7 +492,7 @@ function buildCalculatorHTML(key) {
           </ul>
 
           <a class="btn-primary cpro-cta" id="cr-book-btn"
-            href="../../pages/booking.html?service=${key}&locked=1">
+            href="../../pages/booking.html?service=\${key}&locked=1">
             Book Free Consultation →
           </a>
           <p class="cpro-footnote">No payment now · Ankur replies in 24 hrs</p>
@@ -481,7 +501,7 @@ function buildCalculatorHTML(key) {
       </div>
     </div>
   </div>
-</section>`;
+</section>\`;
 }
 
 /* Expose globally */
@@ -573,10 +593,13 @@ ${hasCalc ? buildCalculatorHTML(key) : `
     <div class="sol-price-card">
       <div class="spc-left">
         ${s.setup ? `<div class="spc-price-row"><span class="spc-label">One-time setup</span><span class="spc-amount">${s.setup}</span></div>` : ''}
-        <div class="spc-price-row">
+        ${!s.oneTime ? `<div class="spc-price-row">
           <span class="spc-label">${s.setup ? 'Monthly maintenance' : 'Monthly'} <span class="spc-mandatory">Mandatory</span></span>
           <span class="spc-amount spc-monthly">${s.monthly}</span>
-        </div>
+        </div>` : `<div class="spc-price-row">
+          <span class="spc-label" style="color:#16A34A;font-weight:700">✅ No monthly fee</span>
+          <span class="spc-amount" style="color:#16A34A">One-time only</span>
+        </div>`}
         <p class="spc-note">Final price depends on exact requirements. Book a free call — we'll give you a fixed quote within 24 hours.</p>
       </div>
       <div class="spc-right">
@@ -586,6 +609,10 @@ ${hasCalc ? buildCalculatorHTML(key) : `
         </ul>
         <a href="${bookingBase}?service=${s.serviceKey}&locked=1" class="btn-primary spc-cta">Book Free Consultation</a>
         <p class="spc-sub">No payment now · Ankur replies within 24 hrs on WhatsApp</p>
+        <div class="domain-info-banner">
+          <div class="dib-item">✅ 1 year domain <strong>FREE</strong></div>
+          <div class="dib-item">✅ Lifetime hosting <strong>FREE</strong></div>
+        </div>
       </div>
     </div>
   </div>
@@ -625,23 +652,22 @@ ${hasCalc ? buildCalculatorHTML(key) : `
   }
 }
 
-/* ── Robust init — always render if key present and main found ── */
-function initSolutionPage(attempt) {
-  attempt = attempt || 0;
+/* ── Render init: works whether DOM is loading or already ready ── */
+function initSolution() {
   var key = (typeof SOLUTION_KEY !== 'undefined') ? SOLUTION_KEY : window.SOLUTION_KEY;
   if (!key) return;
   var main = document.getElementById('solution-main');
   if (main) {
-    /* Always render — don't check innerHTML, whitespace can fool the check */
     renderSolutionPage(key);
-  } else if (attempt < 30) {
-    setTimeout(function(){ initSolutionPage(attempt + 1); }, 50);
+  } else {
+    /* main not yet in DOM, wait for it */
+    document.addEventListener('DOMContentLoaded', function() {
+      renderSolutionPage(key);
+    });
   }
 }
-
-/* Fire on DOMContentLoaded OR immediately if DOM already ready */
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function(){ initSolutionPage(0); });
+  document.addEventListener('DOMContentLoaded', initSolution);
 } else {
-  initSolutionPage(0);
+  initSolution();
 }

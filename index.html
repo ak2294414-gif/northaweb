@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <title>Website Design & Development for Local Businesses in Assam & Northeast India — NorthWeb Co.</title>
 <meta name="description" content="NorthWeb Co. builds fast, mobile-first websites for local businesses across Assam and Northeast India. Restaurants, clinics, gyms, hotels, salons — starting from ₹6,000. Free WhatsApp consultation."/>
-<meta name="keywords" content="website design Assam, website development Guwahati, professional website Northeast India, affordable website design Assam, custom website Guwahati, business website Assam, web designer Assam, website banwao Assam, local business website Assam, small business website Northeast India, website design company Assam, NorthWeb Co, website design Dibrugarh, website design Silchar, website design Jorhat"/>
+<meta name="keywords" content="website design Assam, website development Guwahati, professional website Northeast India, affordable website design Assam, custom website Guwahati, business website Assam, web designer Assam, website banwao Assam, local business website Assam, small business website Northeast India, website design company Assam, NorthWeb Co"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://northwebco.shop/"/>
 <meta name="google-site-verification" content="xtwaCdWM1pyoOMuRppnZDYGZSNnuZeRVYIe0ZDXXMfU"/>
@@ -17,6 +17,8 @@
 <meta property="og:site_name" content="NorthWeb Co."/>
 <meta property="og:locale" content="en_IN"/>
 <meta property="og:image" content="https://northwebco.shop/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image"/>
@@ -36,7 +38,11 @@
   "description": "Professional website design and development for local businesses across Assam and Northeast India. Starting from Rs.6,000.",
   "areaServed": ["Assam","Northeast India","Guwahati","Dibrugarh","Jorhat","Silchar","Nagaland","Meghalaya","Manipur","Tripura"],
   "priceRange": "₹₹",
-  "address": {"@type": "PostalAddress","addressRegion": "Assam","addressCountry": "IN"},
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Assam",
+    "addressCountry": "IN"
+  },
   "sameAs": ["https://wa.me/917637913832"]
 }
 </script>
@@ -52,10 +58,14 @@
 </head>
 <body>
 
-<!-- Urgency Banner -->
-<div id="urgency-banner">
-  <span>🔥 Limited slots available this month — <a href="pages/booking.html">Book your free consultation now →</a></span>
-  <button class="urgency-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- Urgency Top Banner -->
+<div id="urgency-banner" role="banner">
+  <span class="urgency-pulse" aria-hidden="true"></span>
+  <span>⚡ Only <strong>3 slots</strong> left this month — <a href="pages/booking.html">Book your free consultation now →</a></span>
+  <button class="urgency-close" id="urgencyClose" aria-label="Close banner">×</button>
 </div>
 
 <div id="cookie-root"></div>
@@ -80,17 +90,33 @@
         <div class="h-stat-divider"></div>
         <div class="h-stat"><span class="h-stat-num">24hr</span><span class="h-stat-label">Response Time</span></div>
         <div class="h-stat-divider"></div>
-        <div class="h-stat"><span class="h-stat-num">100%</span><span class="h-stat-label">Web Standards</span></div>
+        <div class="h-stat"><span class="h-stat-num">100%</span><span class="h-stat-label">Custom Coded</span></div>
       </div>
+
+      <!-- Mobile-only compact card -->
       <div class="hero-mobile-card" aria-hidden="true">
         <div class="hmc-grid">
-          <div class="hmc-item"><span class="hmc-label">New Enquiry</span><span class="hmc-value green">Received ✓</span></div>
-          <div class="hmc-item"><span class="hmc-label">WhatsApp Reply</span><span class="hmc-value">Sent ↗</span></div>
-          <div class="hmc-item"><span class="hmc-label">Website Status</span><span class="hmc-value green">Live 🟢</span></div>
-          <div class="hmc-item"><span class="hmc-label">Google Ranking</span><span class="hmc-value amber">Top 3 📈</span></div>
+          <div class="hmc-item">
+            <span class="hmc-label">New Enquiry</span>
+            <span class="hmc-value green">Received ✓</span>
+          </div>
+          <div class="hmc-item">
+            <span class="hmc-label">WhatsApp Reply</span>
+            <span class="hmc-value">Sent ↗</span>
+          </div>
+          <div class="hmc-item">
+            <span class="hmc-label">Website Status</span>
+            <span class="hmc-value green">Live 🟢</span>
+          </div>
+          <div class="hmc-item">
+            <span class="hmc-label">Google Ranking</span>
+            <span class="hmc-value amber">Top 3 📈</span>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Desktop visual -->
     <div class="hero-visual" aria-hidden="true">
       <div class="hv-card hv-main">
         <div class="hv-header"><div class="hv-dots"><span></span><span></span><span></span></div><div class="hv-url">northwebco.shop</div></div>
@@ -105,35 +131,34 @@
   </section>
 
   <!-- ══════════════════════ TRUST BADGES ══════════════════════ -->
-  <div class="trust-section">
+  <section class="trust-section anim-hidden" aria-label="Trust indicators">
     <div class="trust-inner">
-      <div class="trust-badge"><span class="trust-badge-icon">🔒</span> Secure & Hosted</div>
-      <div class="trust-badge"><span class="trust-badge-icon">📱</span> Mobile First</div>
-      <div class="trust-badge"><span class="trust-badge-icon">🔍</span> SEO Ready</div>
-      <div class="trust-badge"><span class="trust-badge-icon">⚡</span> Fast Loading</div>
-      <div class="trust-badge"><span class="trust-badge-icon">🤝</span> WhatsApp Support</div>
-      <div class="trust-badge"><span class="trust-badge-icon">🇮🇳</span> Made in Northeast India</div>
+      <div class="trust-badge"><span class="trust-icon">✅</span> 100% Custom Coded — No Templates</div>
+      <div class="trust-badge"><span class="trust-icon">📱</span> Mobile-First Design</div>
+      <div class="trust-badge"><span class="trust-icon">🔍</span> SEO-Ready from Day 1</div>
+      <div class="trust-badge"><span class="trust-icon">💬</span> 24hr WhatsApp Support</div>
+      <div class="trust-badge"><span class="trust-icon">🇮🇳</span> Northeast India Based</div>
     </div>
-  </div>
+  </section>
 
-  <!-- ══════════════════════ STATS ══════════════════════ -->
-  <section class="stats-section" aria-label="Our numbers">
+  <!-- ══════════════════════ STATS COUNTER ══════════════════════ -->
+  <section class="stats-section anim-hidden" aria-label="NorthWeb key numbers">
     <div class="stats-inner">
       <div class="stat-block">
-        <span class="stat-num" data-count="12" data-suffix="+">12+</span>
-        <div class="stat-label">Website Types</div>
+        <span class="stat-num" data-target="12" data-suffix="">12</span>
+        <div class="stat-label">Website Solutions Built</div>
       </div>
       <div class="stat-block">
-        <span class="stat-num" data-count="24" data-suffix="hr">24hr</span>
-        <div class="stat-label">Response Time</div>
-      </div>
-      <div class="stat-block">
-        <span class="stat-num" data-prefix="₹" data-count="6" data-suffix="K+">₹6K+</span>
+        <span class="stat-num" data-target="6" data-suffix="K+">₹6K+</span>
         <div class="stat-label">Starting Price</div>
       </div>
       <div class="stat-block">
-        <span class="stat-num" data-count="100" data-suffix="%">100%</span>
-        <div class="stat-label">Web Standards</div>
+        <span class="stat-num" data-target="24" data-suffix="hr">24hr</span>
+        <div class="stat-label">WhatsApp Response</div>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num" data-target="100" data-suffix="%">100%</span>
+        <div class="stat-label">Satisfaction Guaranteed</div>
       </div>
     </div>
   </section>
@@ -146,118 +171,147 @@
     <div class="sol-cards-grid" id="solutionsGrid"></div>
     <div class="solutions-seo-note">
       <span>🔍</span>
-      <span>Every website includes a Google-friendly structure — meta tags, sitemap & proper headings. For actual ranking improvement,
-        <a href="pages/solutions/seo.html">see our paid SEO plan →</a>
+      <span>Every website comes with basic SEO setup. Want ongoing Google ranking improvement?
+        <a href="pages/solutions/seo.html">See our SEO Add-On →</a>
       </span>
     </div>
   </section>
 
-  <!-- ══════════════════════ WHY US ══════════════════════ -->
-  <section class="whyus-section" aria-labelledby="whyus-h">
-    <div class="section-eyebrow">Why NorthWeb Co.</div>
-    <h2 id="whyus-h">Why Local Businesses Choose Us</h2>
-    <p class="section-sub">We focus on quality, performance, and results — every site is mobile-first and built to actually work for your business.</p>
-    <div class="whyus-grid">
-      <div class="whyus-card">
-        <span class="whyus-icon">⚡</span>
-        <div class="whyus-title">Fast Delivery</div>
-        <div class="whyus-desc">Most websites delivered in 7–14 days — not weeks or months. You get a real timeline before we start.</div>
-      </div>
-      <div class="whyus-card">
-        <span class="whyus-icon">📱</span>
-        <div class="whyus-title">Mobile First, Always</div>
-        <div class="whyus-desc">Over 80% of your customers browse on phones. Every site we build looks perfect on mobile.</div>
-      </div>
-      <div class="whyus-card">
-        <span class="whyus-icon">🔍</span>
-        <div class="whyus-title">Google-Friendly Structure</div>
-        <div class="whyus-desc">Every website includes proper SEO structure, fast loading, and local Google optimization — so customers can find you.</div>
-      </div>
-      <div class="whyus-card">
-        <span class="whyus-icon">💬</span>
-        <div class="whyus-title">WhatsApp Direct Support</div>
-        <div class="whyus-desc">No ticket system. No waiting 5 days. Message Ankur directly on WhatsApp — replies within 24 hours, guaranteed.</div>
-      </div>
-      <div class="whyus-card">
-        <span class="whyus-icon">💰</span>
-        <div class="whyus-title">Honest Pricing</div>
-        <div class="whyus-desc">No hidden fees. You see the full price before you commit. Setup cost + monthly hosting — that's it.</div>
-      </div>
-      <div class="whyus-card">
-        <span class="whyus-icon">🛠️</span>
-        <div class="whyus-title">Professionally Developed</div>
-        <div class="whyus-desc">We use modern web technologies to build fast, secure, and fully-owned websites — tailored to your business.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════ COMPARISON ══════════════════════ -->
-  <section class="compare-section" aria-labelledby="compare-h">
-    <div class="section-eyebrow">How We Compare</div>
-    <h2 id="compare-h">NorthWeb vs. Freelancer vs. Agency</h2>
-    <p class="section-sub">See why local businesses across Northeast India choose NorthWeb Co.</p>
-    <div style="overflow-x:auto">
-      <table class="compare-table">
+  <!-- ══════════════════════ COMPARISON TABLE ══════════════════════ -->
+  <section class="compare-section anim-hidden" aria-labelledby="compare-h">
+    <div class="section-eyebrow">Why NorthWeb?</div>
+    <h2 id="compare-h">NorthWeb Co. vs The Alternatives</h2>
+    <p class="section-sub">See how we compare to freelancers and large agencies for Northeast India businesses.</p>
+    <div class="compare-wrap">
+      <table class="compare-table" role="table">
         <thead>
           <tr>
-            <th>Feature</th>
-            <th class="col-us">NorthWeb Co. ✓</th>
-            <th>Local Freelancer</th>
-            <th>Big Agency</th>
+            <th scope="col">What You Get</th>
+            <th scope="col" class="col-us">NorthWeb Co. ⭐</th>
+            <th scope="col">Random Freelancer</th>
+            <th scope="col">Big Agency</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Custom Hand-Coded</td><td class="col-us cmp-yes">✓</td><td class="cmp-maybe">~</td><td class="cmp-yes">✓</td></tr>
-          <tr><td>Mobile First Design</td><td class="col-us cmp-yes">✓</td><td class="cmp-maybe">~</td><td class="cmp-yes">✓</td></tr>
-          <tr><td>Google-Friendly Structure</td><td class="col-us cmp-yes">✓</td><td class="cmp-no">✗</td><td class="cmp-maybe">~</td></tr>
-          <tr><td>WhatsApp Support</td><td class="col-us cmp-yes">✓</td><td class="cmp-maybe">~</td><td class="cmp-no">✗</td></tr>
-          <tr><td>Delivery in 7–14 Days</td><td class="col-us cmp-yes">✓</td><td class="cmp-maybe">~</td><td class="cmp-no">✗</td></tr>
-          <tr><td>Transparent Pricing</td><td class="col-us cmp-yes">✓</td><td class="cmp-maybe">~</td><td class="cmp-no">✗</td></tr>
-          <tr><td>Starting Price</td><td class="col-us">₹6,000</td><td>₹5,000–20,000</td><td>₹50,000+</td></tr>
-          <tr><td>Northeast India Based</td><td class="col-us cmp-yes">✓</td><td class="cmp-maybe">~</td><td class="cmp-no">✗</td></tr>
+          <tr>
+            <td>Starting Price</td>
+            <td class="col-us">₹6,000–₹30,000</td>
+            <td>₹3,000–₹50,000 (varies)</td>
+            <td>₹50,000+</td>
+          </tr>
+          <tr>
+            <td>Custom Coded (No Wix/Builder)</td>
+            <td class="col-us"><span class="cmp-yes">✓</span></td>
+            <td><span class="cmp-maybe">Sometimes</span></td>
+            <td><span class="cmp-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>Mobile-First Design</td>
+            <td class="col-us"><span class="cmp-yes">✓</span></td>
+            <td><span class="cmp-maybe">Inconsistent</span></td>
+            <td><span class="cmp-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td>SEO Setup Included</td>
+            <td class="col-us"><span class="cmp-yes">✓</span></td>
+            <td><span class="cmp-no">✗</span></td>
+            <td><span class="cmp-maybe">Extra Cost</span></td>
+          </tr>
+          <tr>
+            <td>WhatsApp Communication</td>
+            <td class="col-us"><span class="cmp-yes">✓</span></td>
+            <td><span class="cmp-maybe">Sometimes</span></td>
+            <td><span class="cmp-no">✗</span></td>
+          </tr>
+          <tr>
+            <td>Northeast India Focus</td>
+            <td class="col-us"><span class="cmp-yes">✓</span></td>
+            <td><span class="cmp-no">✗</span></td>
+            <td><span class="cmp-no">✗</span></td>
+          </tr>
+          <tr>
+            <td>Fast Delivery (7–14 days)</td>
+            <td class="col-us"><span class="cmp-yes">✓</span></td>
+            <td><span class="cmp-maybe">Unpredictable</span></td>
+            <td><span class="cmp-no">Months</span></td>
+          </tr>
+          <tr>
+            <td>Free Consultation</td>
+            <td class="col-us"><span class="cmp-yes">✓</span></td>
+            <td><span class="cmp-maybe">Varies</span></td>
+            <td><span class="cmp-no">Paid</span></td>
+          </tr>
+          <tr>
+            <td>Post-Launch Support</td>
+            <td class="col-us"><span class="cmp-yes">✓</span></td>
+            <td><span class="cmp-no">Usually ✗</span></td>
+            <td><span class="cmp-maybe">Extra Cost</span></td>
+          </tr>
         </tbody>
       </table>
+    </div>
+    <p class="compare-note">* Based on typical market rates for Assam & Northeast India</p>
+  </section>
+
+  <!-- ══════════════════════ WHY US ══════════════════════ -->
+  <section class="whyus-section anim-hidden" aria-labelledby="whyus-h">
+    <div class="section-eyebrow">Our Advantage</div>
+    <h2 id="whyus-h">Why Local Businesses Choose NorthWeb</h2>
+    <div class="whyus-grid">
+      <div class="whyus-card">
+        <span class="whyus-icon">🏠</span>
+        <div class="whyus-title">We Know Northeast India</div>
+        <div class="whyus-desc">We're based here. We understand local customers, local competition, and what actually works for SMBs in Assam and Northeast India.</div>
+      </div>
+      <div class="whyus-card">
+        <span class="whyus-icon">⚡</span>
+        <div class="whyus-title">Lightning Fast Delivery</div>
+        <div class="whyus-desc">Most websites delivered in 7–14 days. No months of waiting. You can start getting online leads within 2 weeks of placing your order.</div>
+      </div>
+      <div class="whyus-card">
+        <span class="whyus-icon">📱</span>
+        <div class="whyus-title">Mobile-First, Always</div>
+        <div class="whyus-desc">Over 85% of your customers will view your website on a phone. Every site we build is designed for mobile first, then scaled up for desktop.</div>
+      </div>
+      <div class="whyus-card">
+        <span class="whyus-icon">🔍</span>
+        <div class="whyus-title">Built to Rank on Google</div>
+        <div class="whyus-desc">Every website ships with proper SEO meta tags, Schema markup, sitemap, and page-speed optimization so Google can find and rank you.</div>
+      </div>
+      <div class="whyus-card">
+        <span class="whyus-icon">💬</span>
+        <div class="whyus-title">Real WhatsApp Support</div>
+        <div class="whyus-desc">No ticket system. No email delays. You WhatsApp us, Ankur replies personally — usually within 24 hours, often much faster.</div>
+      </div>
+      <div class="whyus-card">
+        <span class="whyus-icon">💰</span>
+        <div class="whyus-title">Honest, Transparent Pricing</div>
+        <div class="whyus-desc">No hidden fees. No vague quotes. Every solution page shows a clear starting price. You know what you're paying before you commit.</div>
+      </div>
     </div>
   </section>
 
   <!-- ══════════════════════ DEMOS ══════════════════════ -->
-  <section id="demos" class="demos-section" aria-labelledby="demos-h">
+  <section id="demos" class="demos-section anim-hidden" aria-labelledby="demos-h">
     <div class="section-eyebrow">See Our Work</div>
     <h2 id="demos-h">Live Demo Website</h2>
     <p class="section-sub">A real website we've built — click to explore the live demo.</p>
     <div class="demos-grid" id="demosGrid"></div>
   </section>
 
-  <!-- ══════════════════════ CITY PAGES ══════════════════════ -->
-  <section class="city-section" aria-labelledby="city-h">
-    <div class="section-eyebrow">We Serve All of Northeast India</div>
-    <h2 id="city-h">Website Design Across Every City</h2>
-    <p class="section-sub">Based in Assam, serving businesses from Guwahati to Imphal.</p>
-    <div class="city-grid">
-      <div class="city-card"><span class="city-icon">🏙️</span><div class="city-name">Guwahati</div><div class="city-desc">Website design & development in Guwahati</div><div class="city-link">View services →</div></div>
-      <div class="city-card"><span class="city-icon">🌿</span><div class="city-name">Dibrugarh</div><div class="city-desc">Local business websites in Dibrugarh</div><div class="city-link">View services →</div></div>
-      <div class="city-card"><span class="city-icon">🎓</span><div class="city-name">Jorhat</div><div class="city-desc">Professional websites for Jorhat businesses</div><div class="city-link">View services →</div></div>
-      <div class="city-card"><span class="city-icon">🏔️</span><div class="city-name">Silchar</div><div class="city-desc">Affordable website design in Silchar</div><div class="city-link">View services →</div></div>
-      <div class="city-card"><span class="city-icon">🌄</span><div class="city-name">Shillong</div><div class="city-desc">Business websites in Meghalaya</div><div class="city-link">View services →</div></div>
-      <div class="city-card"><span class="city-icon">🦋</span><div class="city-name">Imphal</div><div class="city-desc">Web design for Manipur businesses</div><div class="city-link">View services →</div></div>
-      <div class="city-card"><span class="city-icon">🍵</span><div class="city-name">Tezpur</div><div class="city-desc">Websites for local Tezpur businesses</div><div class="city-link">View services →</div></div>
-      <div class="city-card"><span class="city-icon">🏡</span><div class="city-name">Nagaon</div><div class="city-desc">Professional web presence in Nagaon</div><div class="city-link">View services →</div></div>
-    </div>
-  </section>
-
   <!-- ══════════════════════ ABOUT ══════════════════════ -->
-  <section id="about" class="about-section" aria-labelledby="about-h">
+  <section id="about" class="about-section anim-hidden" aria-labelledby="about-h">
     <div class="about-inner">
       <div class="about-text">
         <div class="about-badge">👨‍💻 Who Builds Your Website</div>
         <h2 id="about-h">Built by a Developer Who Actually Cares</h2>
         <p>Hi, I'm <strong>Ankur</strong> — a self-taught web developer based in Northeast India. I started NorthWeb Co. because I saw local businesses losing customers simply because they had no proper online presence.</p>
-        <p>I've spent the last year studying what makes websites actually work — studying real businesses, real customer behaviour, and what Google rewards. Every website I build is mobile-first, performance-optimised, and built to work for your business.</p>
-        <p>You get a professionally developed website, built with care, and maintained by someone who responds to your WhatsApp within 24 hours.</p>
+        <p>I've spent the last year studying what makes websites actually work — studying real businesses, real customer behaviour, and what Google rewards. Every website I build is hand-coded, mobile-first, and built to rank.</p>
+        <p>You won't get a Wix template here. You get a custom-built website, built with care, and maintained by someone who responds to your WhatsApp within 24 hours.</p>
         <div class="about-chips">
-          <span class="about-chip">✅ Professionally Built</span>
+          <span class="about-chip">✅ Custom Coded</span>
           <span class="about-chip">📱 Mobile First</span>
-          <span class="about-chip">🔍 Google-Friendly</span>
+          <span class="about-chip">🔍 SEO Ready</span>
           <span class="about-chip">⚡ Fast Loading</span>
           <span class="about-chip">🇮🇳 Northeast India Based</span>
         </div>
@@ -268,7 +322,7 @@
         <div class="av-stats">
           <div class="av-stat"><span class="av-stat-num">12</span><span class="av-stat-label">Website Types Built</span></div>
           <div class="av-stat"><span class="av-stat-num">24hr</span><span class="av-stat-label">WhatsApp Response</span></div>
-          <div class="av-stat"><span class="av-stat-num">100%</span><span class="av-stat-label">Quality Assured</span></div>
+          <div class="av-stat"><span class="av-stat-num">100%</span><span class="av-stat-label">Custom Code</span></div>
           <div class="av-stat"><span class="av-stat-num">₹0</span><span class="av-stat-label">Consultation Fee</span></div>
         </div>
       </div>
@@ -276,7 +330,7 @@
   </section>
 
   <!-- ══════════════════════ TESTIMONIALS ══════════════════════ -->
-  <section id="testimonials" class="testimonials-section" aria-labelledby="t-h">
+  <section id="testimonials" class="testimonials-section anim-hidden" aria-labelledby="t-h">
     <div class="section-eyebrow">What Clients Say</div>
     <h2 id="t-h">Early Feedback from Our Clients</h2>
     <p class="section-sub">We're just getting started — here's what people say after working with us.</p>
@@ -284,44 +338,84 @@
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-text">"Ankur delivered our clothing store website exactly as discussed. Fast communication on WhatsApp, clean design, and the site loads really quickly. Very happy with the result."</p>
-        <div class="t-author"><div class="t-avatar">R</div><div><div class="t-name">Riya Sharma</div><div class="t-biz">Boutique Owner, Guwahati</div></div></div>
+        <div class="t-author">
+          <div class="t-avatar">R</div>
+          <div>
+            <div class="t-name">Riya Sharma</div>
+            <div class="t-biz">Boutique Owner, Guwahati</div>
+          </div>
+        </div>
       </div>
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-text">"Great value for money. My restaurant website now gets enquiries directly through WhatsApp. The digital menu is easy to update and customers love it."</p>
-        <div class="t-author"><div class="t-avatar">P</div><div><div class="t-name">Pranab Das</div><div class="t-biz">Restaurant Owner, Jorhat</div></div></div>
+        <div class="t-author">
+          <div class="t-avatar">P</div>
+          <div>
+            <div class="t-name">Pranab Das</div>
+            <div class="t-biz">Restaurant Owner, Jorhat</div>
+          </div>
+        </div>
       </div>
       <div class="t-card">
         <div class="t-stars">★★★★★</div>
         <p class="t-text">"Professional, responsive, and affordable. Ankur understood what I needed and built it without me having to explain too much. Will recommend to other business owners."</p>
-        <div class="t-author"><div class="t-avatar">M</div><div><div class="t-name">Meghna Borah</div><div class="t-biz">Salon Owner, Dibrugarh</div></div></div>
+        <div class="t-author">
+          <div class="t-avatar">M</div>
+          <div>
+            <div class="t-name">Meghna Borah</div>
+            <div class="t-biz">Salon Owner, Dibrugarh</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════ FAQ ══════════════════════ -->
-  <section class="faq-section" aria-labelledby="faq-h">
-    <div class="section-eyebrow">Common Questions</div>
-    <h2 id="faq-h">Frequently Asked Questions</h2>
-    <p class="section-sub">Everything you want to know before booking.</p>
-    <div class="faq-grid" id="faqGrid"></div>
-  </section>
-
   <!-- ══════════════════════ PROCESS ══════════════════════ -->
-  <section id="process" class="process-section" aria-labelledby="process-h">
+  <section id="process" class="process-section anim-hidden" aria-labelledby="process-h">
     <div class="section-eyebrow">How It Works</div>
     <h2 id="process-h">From Chat to Live Website — in 5 Steps</h2>
     <p class="section-sub">You share your contact. We handle everything else, end to end.</p>
     <div class="process-steps">
-      <div class="ps-item"><div class="ps-num">1</div><div class="ps-content"><h3>Book Free Consultation</h3><p>Fill the form or WhatsApp us. Ankur replies within 24 hours to discuss your project.</p></div></div>
+      <div class="ps-item">
+        <div class="ps-num">1</div>
+        <div class="ps-content">
+          <h3>Book Free Consultation</h3>
+          <p>Fill the form or WhatsApp us. Ankur replies within 24 hours to discuss your project.</p>
+        </div>
+      </div>
       <div class="ps-connector" aria-hidden="true">→</div>
-      <div class="ps-item"><div class="ps-num">2</div><div class="ps-content"><h3>Share Requirements</h3><p>Tell us your business, your goals, and what you want the website to do.</p></div></div>
+      <div class="ps-item">
+        <div class="ps-num">2</div>
+        <div class="ps-content">
+          <h3>Share Requirements</h3>
+          <p>Tell us your business, your goals, and what you want the website to do.</p>
+        </div>
+      </div>
       <div class="ps-connector" aria-hidden="true">→</div>
-      <div class="ps-item"><div class="ps-num">3</div><div class="ps-content"><h3>Design & Build</h3><p>We design and build your website. You can review progress at any time.</p></div></div>
+      <div class="ps-item">
+        <div class="ps-num">3</div>
+        <div class="ps-content">
+          <h3>Design &amp; Build</h3>
+          <p>We design and build your website. You can review progress at any time.</p>
+        </div>
+      </div>
       <div class="ps-connector" aria-hidden="true">→</div>
-      <div class="ps-item"><div class="ps-num">4</div><div class="ps-content"><h3>Review & Revise</h3><p>2 free revision rounds until you're 100% satisfied with the result.</p></div></div>
+      <div class="ps-item">
+        <div class="ps-num">4</div>
+        <div class="ps-content">
+          <h3>Review &amp; Revise</h3>
+          <p>2 free revision rounds until you're 100% satisfied with the result.</p>
+        </div>
+      </div>
       <div class="ps-connector" aria-hidden="true">→</div>
-      <div class="ps-item"><div class="ps-num">5</div><div class="ps-content"><h3>Go Live!</h3><p>Your website goes live. We hand over everything — domain, hosting guidance, files.</p></div></div>
+      <div class="ps-item">
+        <div class="ps-num">5</div>
+        <div class="ps-content">
+          <h3>Go Live!</h3>
+          <p>Your website goes live. We hand over everything — domain, hosting guidance, files.</p>
+        </div>
+      </div>
     </div>
     <div class="process-cta">
       <a href="pages/booking.html" class="btn-primary">Start Now — Book Free Consultation</a>
@@ -329,9 +423,57 @@
     </div>
   </section>
 
+  <!-- ══════════════════════ FAQ ══════════════════════ -->
+  <section class="faq-section anim-hidden" aria-labelledby="faq-h">
+    <div class="section-eyebrow">Questions &amp; Answers</div>
+    <h2 id="faq-h">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you want to know before getting started.</p>
+    <div class="faq-grid" id="faqGrid"></div>
+    <div class="faq-cta">
+      <a href="pages/booking.html" class="faq-cta-link">Still have a question? Book a free consultation and ask Ankur directly →</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ CITY PAGES ══════════════════════ -->
+  <section class="city-section anim-hidden" aria-labelledby="city-h">
+    <div class="section-eyebrow">We Serve Your City</div>
+    <h2 id="city-h">Website Design Across Northeast India</h2>
+    <p class="section-sub">NorthWeb Co. serves businesses in every major city and town across Assam and Northeast India.</p>
+    <div class="city-grid">
+      <a href="pages/cities/guwahati.html" class="city-card">
+        <span class="city-icon">🏙️</span>
+        <div class="city-name">Guwahati</div>
+        <div class="city-desc">Website design for Guwahati businesses — the business capital of Northeast India.</div>
+        <span class="city-link">View Guwahati →</span>
+      </a>
+      <a href="pages/cities/dibrugarh.html" class="city-card">
+        <span class="city-icon">🌿</span>
+        <div class="city-name">Dibrugarh</div>
+        <div class="city-desc">Professional websites for Dibrugarh businesses — the tea city of Assam.</div>
+        <span class="city-link">View Dibrugarh →</span>
+      </a>
+      <a href="pages/cities/silchar.html" class="city-card">
+        <span class="city-icon">🎓</span>
+        <div class="city-name">Silchar</div>
+        <div class="city-desc">Website development in Silchar — Barak Valley's largest city.</div>
+        <span class="city-link">View Silchar →</span>
+      </a>
+      <a href="pages/booking.html" class="city-card">
+        <span class="city-icon">📍</span>
+        <div class="city-name">Your City</div>
+        <div class="city-desc">Jorhat, Tezpur, Nagaon, Shillong, Kohima, Imphal and more — we serve all of Northeast India.</div>
+        <span class="city-link">Book Consultation →</span>
+      </a>
+    </div>
+  </section>
+
   <!-- ══════════════════════ FINAL CTA ══════════════════════ -->
   <section class="final-cta-section" aria-labelledby="cta-h">
     <div class="fcs-inner">
+      <div style="display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.12);padding:.45rem 1rem;border-radius:100px;font-size:.82rem;font-weight:700;margin-bottom:1.2rem;color:#FDE68A;">
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#FDE68A;animation:pulse-dot 1.4s ease-in-out infinite;"></span>
+        Only 3 consultation slots left this month
+      </div>
       <h2 id="cta-h">Ready to Get Your Website Built?</h2>
       <p>Book a free consultation — Ankur will respond within 24 hours on WhatsApp. No obligations, no hidden fees.</p>
       <div class="fcs-btns">
@@ -347,9 +489,12 @@
 
 </main>
 
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Back to top">↑</button>
+
 <div id="footer-root"></div>
-<script src="js/components.js" defer></script>
-<script src="js/home.js" defer></script>
+<script src="js/components.js"></script>
+<script src="js/home.js"></script>
 <script src="js/animations.js" defer></script>
 </body>
 </html>
