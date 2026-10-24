@@ -227,6 +227,10 @@
 .fcs-wa-btn:hover { background: #1EA855; transform: translateY(-2px); }
 .fcs-note { font-size: .8rem; color: rgba(255,255,255,.35); }
 
+/* ── Solution card as button (popup trigger) ── */
+.sol-home-card { cursor: pointer; }
+.sol-home-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding: 3.5rem 6% 3rem; gap: 1rem; }
