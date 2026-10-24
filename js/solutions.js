@@ -625,15 +625,16 @@ ${hasCalc ? buildCalculatorHTML(key) : `
   }
 }
 
-/* ── Robust init — retry until solution-main exists ── */
+/* ── Robust init — always render if key present and main found ── */
 function initSolutionPage(attempt) {
   attempt = attempt || 0;
   var key = (typeof SOLUTION_KEY !== 'undefined') ? SOLUTION_KEY : window.SOLUTION_KEY;
   if (!key) return;
   var main = document.getElementById('solution-main');
-  if (main && main.innerHTML.trim() === '') {
+  if (main) {
+    /* Always render — don't check innerHTML, whitespace can fool the check */
     renderSolutionPage(key);
-  } else if (!main && attempt < 20) {
+  } else if (attempt < 30) {
     setTimeout(function(){ initSolutionPage(attempt + 1); }, 50);
   }
 }
