@@ -205,3 +205,10 @@ footer {
   text-transform: uppercase; letter-spacing: .04em;
   vertical-align: middle; margin-left: .35rem;
 }
+
+/* ── Lazy Load Images ── */
+img[loading="lazy"] { opacity: 0; transition: opacity .4s; }
+img[loading="lazy"].loaded { opacity: 1; }
+
+/* ── Offer Banner fix ── */
+.offer-banner { display: none; }
