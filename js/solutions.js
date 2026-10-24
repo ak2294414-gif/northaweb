@@ -145,6 +145,18 @@ const ADDONS = {
       { id:'local_guide', label:'Local Attractions Guide', icon:'🗺️', desc:'Curated nearby places — adds value for guests', type:'toggle', priceSetup:799, priceMonthly:0 },
       { id:'seo', label:'Local SEO Add-On', icon:'🔍', desc:'Rank for "hotel in [city]" — beat OTAs', type:'toggle', priceSetup:0, priceMonthly:3999, tag:'+₹3,999/mo' },
     ]
+  },
+  seo: {
+    base: { setup: 0, monthly: 3999 },
+    addons: [
+      { id:'gmb_setup', label:'Google My Business Setup', icon:'📍', desc:'Full GMB profile setup & optimisation (one-time)', type:'toggle', priceSetup:1999, priceMonthly:0, default:true, locked:true, tag:'INCLUDED' },
+      { id:'keyword_research', label:'Keyword Research Report', icon:'🔍', desc:'Top 50 local keywords for your business & city', type:'toggle', priceSetup:999, priceMonthly:0, default:true, locked:true, tag:'INCLUDED' },
+      { id:'on_page_seo', label:'On-Page SEO (Full Site)', icon:'📄', desc:'Meta tags, headings, schema markup, internal links', type:'toggle', priceSetup:1499, priceMonthly:0, default:true, locked:true, tag:'INCLUDED' },
+      { id:'monthly_report', label:'Monthly Ranking Report', icon:'📊', desc:'Rankings, traffic & Google Maps position each month', type:'toggle', priceSetup:0, priceMonthly:0, default:true, locked:true, tag:'INCLUDED' },
+      { id:'plan_upgrade', label:'High-Power SEO (upgrade)', icon:'🚀', desc:'Upgrade to aggressive ranking campaign — more cities, more keywords', type:'toggle', priceSetup:0, priceMonthly:4000, tag:'+₹4,000/mo' },
+      { id:'review_mgmt', label:'Review Management', icon:'⭐', desc:'Systematic Google review request & response strategy', type:'toggle', priceSetup:0, priceMonthly:999 },
+      { id:'competitor_analysis', label:'Competitor Analysis', icon:'🎯', desc:'Monthly report on top 3 competitors — what they rank for', type:'toggle', priceSetup:0, priceMonthly:1499 },
+    ]
   }
 };
 
@@ -513,9 +525,14 @@ window.calcRender    = calcRender;
    PAGE RENDERER
    ============================================================ */
 function renderSolutionPage(key) {
+  const main = document.getElementById('solution-main');
+  if (main && !main.dataset.loading) {
+    main.dataset.loading = '1';
+    main.innerHTML = '<div class="sol-loading"><div class="sol-sk sol-sk-hero"></div><div class="sol-sk sol-sk-block"></div><div class="sol-sk sol-sk-block"></div></div>';
+  }
   const s = SOLUTIONS[key];
   if (!s) {
-    document.getElementById('solution-main').innerHTML = '<p style="padding:4rem 6%;color:#DC2626">Solution not found.</p>';
+    main.innerHTML = '<p style="padding:4rem 6%;color:#DC2626">Solution not found.</p>';
     return;
   }
 
@@ -534,6 +551,8 @@ function renderSolutionPage(key) {
     </nav>`;
 
   const bookingBase = '../../pages/booking.html';
+  const waText = encodeURIComponent('Hi Ankur! I am interested in the ' + s.title + ' for my business. Can we discuss?');
+  const waLink = 'https://wa.me/917637913832?text=' + waText;
   const demoBtn = s.demo
     ? `<a href="${s.demo}" target="_blank" rel="noopener noreferrer" class="btn-secondary sol-demo-btn">View Live Demo ↗</a>`
     : `<span class="sol-demo-soon">Demo coming soon</span>`;
@@ -560,6 +579,7 @@ function renderSolutionPage(key) {
       <a href="${bookingBase}?service=${s.serviceKey}&locked=1" class="btn-primary">
         Book Free Consultation — ${s.setup ? s.setup + ' onwards' : s.monthly}
       </a>
+      <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-wa-sol">💬 WhatsApp Us Now</a>
       ${demoBtn}
     </div>
   </div>
