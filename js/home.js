@@ -1,7 +1,5 @@
 /* ============================================================
    NorthWeb Co. — Homepage JavaScript
-   File: js/home.js
-   Renders solution cards and demo grid dynamically.
    ============================================================ */
 
 const HOME_SOLUTIONS = [
@@ -19,22 +17,15 @@ const HOME_SOLUTIONS = [
   { key: 'hotel',      icon: '🏨', title: 'Hotel / Homestay / PG', desc: 'Room listings, amenities, booking inquiry',                price: 'From ₹18,000', accent: '#1D4ED8' },
 ];
 
+/* Only live demos shown */
 const HOME_DEMOS = [
-  { key: 'showcase', icon: '🛍️', title: 'Collection Showcase', type: 'Clothing Store Demo', live: true,  url: 'https://domeweb.shop/', urlLabel: 'domeweb.shop' },
-  { key: 'ecommerce',  icon: '🛒', title: 'D2C E-commerce',     type: 'Online Store Demo',        live: false },
-  { key: 'restaurant', icon: '🍽️', title: 'Restaurant Website', type: 'Restaurant Demo',           live: false },
-  { key: 'business',   icon: '🏢', title: 'Corporate Website',  type: 'Business Demo',             live: false },
-  { key: 'portfolio',  icon: '🎨', title: 'Portfolio Website',  type: 'Freelancer Portfolio',      live: false },
-  { key: 'gym',        icon: '💪', title: 'Gym Website',        type: 'Fitness Studio Demo',       live: false },
-  { key: 'salon',      icon: '💅', title: 'Salon Website',      type: 'Beauty Parlor Demo',        live: false },
-  { key: 'medical',    icon: '🏥', title: 'Clinic Website',     type: 'Medical Centre Demo',       live: false },
+  { key: 'showcase', icon: '🛍️', title: 'Collection Showcase Website', type: 'Clothing Store — Live Demo', live: true, url: 'https://domeweb.shop/', urlLabel: 'domeweb.shop' },
 ];
 
 /* ---------- RENDER SOLUTION CARDS ---------- */
 function renderSolutionCards() {
   const grid = document.getElementById('solutionsGrid');
   if (!grid) return;
-
   grid.innerHTML = HOME_SOLUTIONS.map(s => `
     <a href="pages/solutions/${s.key}.html" class="sol-home-card" style="--card-accent:${s.accent}">
       <span class="shc-icon">${s.icon}</span>
@@ -52,35 +43,20 @@ function renderSolutionCards() {
 function renderDemoGrid() {
   const grid = document.getElementById('demosGrid');
   if (!grid) return;
-
-  grid.innerHTML = HOME_DEMOS.map(d => {
-    if (d.live) {
-      return `
-      <div class="demo-card live">
-        <a href="${d.url}" target="_blank" rel="noopener noreferrer">
-          <div class="dc-thumb">${d.icon}</div>
-          <div class="dc-info">
-            <span class="dc-badge live-badge">🟢 Live Demo</span>
-            <div class="dc-title">${d.title}</div>
-            <div class="dc-type">${d.type}</div>
-            <div class="dc-link">Visit ${d.urlLabel} ↗</div>
-          </div>
-        </a>
-      </div>`;
-    }
-    return `
-    <div class="demo-card coming">
-      <div class="dc-thumb">⏳</div>
-      <div class="dc-info">
-        <span class="dc-badge soon-badge">Coming Soon</span>
-        <div class="dc-title">${d.title}</div>
-        <div class="dc-type">${d.type}</div>
-      </div>
-    </div>`;
-  }).join('');
+  grid.innerHTML = HOME_DEMOS.map(d => `
+    <div class="demo-card live">
+      <a href="${d.url}" target="_blank" rel="noopener noreferrer">
+        <div class="dc-thumb">${d.icon}</div>
+        <div class="dc-info">
+          <span class="dc-badge live-badge">🟢 Live Demo</span>
+          <div class="dc-title">${d.title}</div>
+          <div class="dc-type">${d.type}</div>
+          <div class="dc-link">Visit ${d.urlLabel} ↗</div>
+        </div>
+      </a>
+    </div>`).join('');
 }
 
-/* ---------- INIT ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   renderSolutionCards();
   renderDemoGrid();

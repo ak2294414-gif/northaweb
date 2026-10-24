@@ -205,7 +205,7 @@ function renderSolutionPage(key) {
   const descMeta = document.querySelector('meta[name="description"]');
   if (descMeta) descMeta.content = s.seoDesc;
   const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.href = 'https://northweb.co/pages/solutions/' + key + '.html';
+  if (canonical) canonical.href = 'https://northwebco.shop/pages/solutions/' + key + '.html';
 
   // Breadcrumb
   const bc = document.getElementById('breadcrumb-root');

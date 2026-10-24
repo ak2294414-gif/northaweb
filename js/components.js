@@ -13,7 +13,7 @@ const NAV_LINKS = [
 
 const WA_NUMBER  = '917637913832';
 const WA_DISPLAY = '7637 913 832';
-const EMAIL      = 'ak2294414x@gmail.com';
+const EMAIL      = 'northwebco.shop@gmail.com';
 
 /* ---------- RELATIVE HREF (handles 3 depth levels) ---------- */
 function getRelHref(path) {
