@@ -120,9 +120,10 @@ function renderFooter() {
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© ${new Date().getFullYear()} NorthWeb Co. · Ankur · Northeast India · <a href="mailto:${EMAIL}">${EMAIL}</a></span>
+    <span>© ${new Date().getFullYear()} NorthWeb Co. · Ankur · Northeast India · <a href="mailto:${EMAIL}" aria-label="Email NorthWeb Co.">${EMAIL}</a></span>
     <span>
-      <a href="https://wa.me/${WA_NUMBER}" target="_blank" rel="noopener noreferrer">WhatsApp: ${WA_DISPLAY}</a>
+      <a href="tel:+${WA_NUMBER}" aria-label="Call NorthWeb Co.">📞 +${WA_NUMBER}</a>
+      &nbsp;·&nbsp;<a href="https://wa.me/${WA_NUMBER}" target="_blank" rel="noopener noreferrer">WhatsApp: ${WA_DISPLAY}</a>
       &nbsp;·&nbsp;<a href="${getRelHref('pages/policies.html')}">Privacy</a>
       &nbsp;·&nbsp;<a href="${getRelHref('pages/policies.html')}#terms">Terms</a>
     </span>

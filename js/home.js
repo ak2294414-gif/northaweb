@@ -137,21 +137,19 @@ function initScrollAnimations() {
   document.querySelectorAll('.anim-hidden').forEach(el => io.observe(el));
 }
 
-/* ---------- CARD CURSOR GLOW EFFECT ---------- */
+/* ---------- CARD CURSOR GLOW EFFECT (CSS var approach — no offset bug) ---------- */
 function initCardGlow() {
   const SELECTORS = '.sol-home-card, .t-card, .demo-card, .faq-item, .city-card, .whyus-card';
   document.querySelectorAll(SELECTORS).forEach(card => {
-    const spot = document.createElement('div');
-    spot.className = 'glow-spot';
-    card.appendChild(spot);
-
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
-      spot.style.left = (e.clientX - r.left) + 'px';
-      spot.style.top  = (e.clientY - r.top) + 'px';
-      spot.style.opacity = '1';
+      card.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+      card.classList.add('glow-active');
     });
-    card.addEventListener('mouseleave', () => { spot.style.opacity = '0'; });
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('glow-active');
+    });
   });
 }
 
