@@ -61,7 +61,7 @@ function renderSolutionCards() {
   const grid = document.getElementById('solutionsGrid');
   if (!grid) return;
   grid.innerHTML = HOME_SOLUTIONS.map(s => `
-    <div class="sol-home-card" style="--card-accent:${s.accent}" onclick="openPopup('${s.key}')" role="button" tabindex="0" aria-label="${s.title}">
+    <a href="pages/solutions/${s.key}.html" class="sol-home-card" style="--card-accent:${s.accent}">
       <span class="shc-icon">${s.icon}</span>
       <div class="shc-title">${s.title}</div>
       <div class="shc-desc">${s.desc}</div>
@@ -69,7 +69,7 @@ function renderSolutionCards() {
         <span class="shc-price">${s.price}</span>
         <span class="shc-arrow">→</span>
       </div>
-    </div>
+    </a>
   `).join('');
 }
 
@@ -92,21 +92,6 @@ function renderDemoGrid() {
 }
 
 /* ---------- RENDER FAQ ---------- */
-
-function toggleFAQ(i) {
-  const item = document.getElementById(`faq-${i}`);
-  const btn = item.querySelector('.faq-q');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(el => {
-    el.classList.remove('open');
-    el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-  });
-  if (!isOpen) {
-    item.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-  }
-}
-
 function renderFAQ() {
   const grid = document.getElementById('faqGrid');
   if (!grid) return;
@@ -140,6 +125,19 @@ function renderFAQ() {
 
 /* ---------- SCROLL ANIMATIONS (Intersection Observer) ---------- */
 function initScrollAnimations() {
+  // Add anim-hidden to individual cards AFTER DOM is ready (not sections)
+  const CARD_SEL = [
+    '.sol-home-card', '.t-card', '.demo-card',
+    '.whyus-card', '.city-card', '.faq-item',
+    '.ps-item', '.av-stat', '.trust-badge',
+    '.compare-table tr', '.stat-block'
+  ].join(', ');
+
+  document.querySelectorAll(CARD_SEL).forEach((el, i) => {
+    el.classList.add('anim-hidden');
+    el.style.transitionDelay = (i % 8 * 55) + 'ms';
+  });
+
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -252,57 +250,3 @@ document.addEventListener('DOMContentLoaded', () => {
     initUrgencyBanner();
   });
 });
-
-/* ---------- GLASSMORPHISM QUICK-VIEW POPUP ---------- */
-const SOL_DETAILS = {
-  showcase:   { features: ['Product photo gallery','WhatsApp order button','Collections / categories','Mobile-first layout','Basic SEO setup','Fast loading'] },
-  ecommerce:  { features: ['Full cart & checkout','UPI / Razorpay payments','Product management','Order notifications','Discount coupons','Admin panel'] },
-  restaurant: { features: ['Digital menu','WhatsApp reservations','Food gallery','Location & hours','Google Maps embed','Mobile optimized'] },
-  business:   { features: ['Company overview','Services listing','Team profiles','Enquiry form','Google Maps','SEO optimized'] },
-  portfolio:  { features: ['Project showcase','Skills section','Contact form','Resume download','Custom domain','Fast loading'] },
-  realestate: { features: ['Property listings','Photo galleries','Enquiry forms','Location maps','Featured properties','WhatsApp lead'] },
-  education:  { features: ['Course listings','Enrollment form','Faculty profiles','Class schedule','Fee structure','Student testimonials'] },
-  gym:        { features: ['Membership plans','Class timetable','Trainer profiles','Photo gallery','WhatsApp join','Offer banners'] },
-  salon:      { features: ['Services menu','Before/after gallery','Appointment booking','Stylist profiles','Price list','WhatsApp booking'] },
-  medical:    { features: ['Doctor profiles','Appointment booking','Services listing','Timing & location','Insurance info','Patient reviews'] },
-  event:      { features: ['RSVP system','Countdown timer','Event schedule','Photo gallery','Package pricing','WhatsApp RSVP'] },
-  hotel:      { features: ['Room listings','Amenities showcase','Booking inquiry','Photo gallery','Location & map','WhatsApp booking'] },
-  seo:        { features: ['Keyword research','On-page SEO','Google Search Console','Monthly report','Local citations','Competitor analysis'] },
-};
-
-function openPopup(key) {
-  const sol = HOME_SOLUTIONS.find(s => s.key === key);
-  const det = SOL_DETAILS[key] || { features: [] };
-  if (!sol) return;
-  let overlay = document.getElementById('glass-popup-overlay');
-  if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.id = 'glass-popup-overlay';
-    overlay.className = 'glass-popup-overlay';
-    overlay.innerHTML = `<div class="glass-popup" role="dialog" aria-modal="true"></div>`;
-    overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
-    document.body.appendChild(overlay);
-  }
-  const popup = overlay.querySelector('.glass-popup');
-  popup.innerHTML = `
-    <button class="gp-close" onclick="closePopup()" aria-label="Close">✕</button>
-    <span class="gp-icon">${sol.icon}</span>
-    <div class="gp-title">${sol.title}</div>
-    <div class="gp-price">${sol.price} setup · Monthly from ₹999/mo</div>
-    <ul class="gp-features">${det.features.map(f => `<li>${f}</li>`).join('')}</ul>
-    <div class="gp-btns">
-      <a href="pages/solutions/${key}.html" class="gp-btn-secondary">Full Details →</a>
-      <a href="pages/booking.html" class="gp-btn-primary">Book Free Consultation</a>
-    </div>
-  `;
-  requestAnimationFrame(() => overlay.classList.add('open'));
-  document.body.style.overflow = 'hidden';
-}
-
-function closePopup() {
-  const overlay = document.getElementById('glass-popup-overlay');
-  if (overlay) overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });

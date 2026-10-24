@@ -652,22 +652,7 @@ ${hasCalc ? buildCalculatorHTML(key) : `
   }
 }
 
-/* ── Render init: works whether DOM is loading or already ready ── */
-function initSolution() {
-  var key = (typeof SOLUTION_KEY !== 'undefined') ? SOLUTION_KEY : window.SOLUTION_KEY;
-  if (!key) return;
-  var main = document.getElementById('solution-main');
-  if (main) {
-    renderSolutionPage(key);
-  } else {
-    /* main not yet in DOM, wait for it */
-    document.addEventListener('DOMContentLoaded', function() {
-      renderSolutionPage(key);
-    });
-  }
-}
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSolution);
-} else {
-  initSolution();
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const key = (typeof SOLUTION_KEY !== 'undefined') ? SOLUTION_KEY : window.SOLUTION_KEY;
+  if (key) renderSolutionPage(key);
+});
