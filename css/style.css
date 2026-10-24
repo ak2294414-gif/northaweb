@@ -205,3 +205,38 @@ footer {
   text-transform: uppercase; letter-spacing: .04em;
   vertical-align: middle; margin-left: .35rem;
 }
+
+/* ============================================================
+   GLOBAL DARK GLASS OVERRIDES
+   ============================================================ */
+
+/* Body background — dark */
+body {
+  background: #060d1f !important;
+  color: rgba(255,255,255,.85) !important;
+}
+
+/* Section eyebrow pill — glass style on dark */
+.section-eyebrow {
+  color: rgba(255,255,255,.6) !important;
+  background: rgba(255,255,255,.07) !important;
+  border: 1px solid rgba(255,255,255,.1) !important;
+  border-radius: 99px !important;
+  padding: .28rem .85rem !important;
+  letter-spacing: .08em !important;
+}
+
+/* Section headings */
+h2 { color: #ffffff !important; }
+.section-sub { color: rgba(255,255,255,.5) !important; }
+
+/* btn-secondary on dark — white ghost */
+.btn-secondary {
+  color: rgba(255,255,255,.85) !important;
+  border-color: rgba(255,255,255,.25) !important;
+  background: rgba(255,255,255,.05) !important;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,.1) !important;
+  border-color: rgba(255,255,255,.5) !important;
+}
