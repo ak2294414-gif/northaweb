@@ -156,7 +156,7 @@
 
 /* ── Section: deep dark with gradient glow ── */
 .cpro-section {
-  background: linear-gradient(145deg, #060d1f 0%, #0a1628 50%, #060d1f 100%);
+  background: linear-gradient(145deg, #060d1f 0%, #0a1628 50%, #060d1f 100%) !important;
   padding: 5rem 6%;
   position: relative;
   overflow: hidden;
@@ -233,9 +233,10 @@
   pointer-events: none;
 }
 .cpro-card:hover {
-  border-color: rgba(255,255,255,.18);
-  background: rgba(255,255,255,.07);
-  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.07), inset 0 1px 0 rgba(255,255,255,.1);
 }
 .cpro-card-active {
   background: rgba(37,99,235,.12) !important;
@@ -274,10 +275,10 @@
 }
 .cpro-desc {
   font-size: .74rem;
-  color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,.55);
   line-height: 1.55;
 }
-.cpro-card-active .cpro-desc { color: rgba(255,255,255,.55); }
+.cpro-card-active .cpro-desc { color: rgba(255,255,255,.72); }
 
 /* Badge */
 .cpro-badge {
@@ -372,10 +373,10 @@
   color: #fff; min-width: 2.5rem;
   text-shadow: 0 0 20px rgba(99,159,255,.4);
 }
-.cpro-unit { font-size: .74rem; color: rgba(255,255,255,.35); }
+.cpro-unit { font-size: .74rem; color: rgba(255,255,255,.5); }
 .cpro-hint {
   font-size: .72rem;
-  color: rgba(255,255,255,.32);
+  color: rgba(255,255,255,.48);
   min-height: 1rem;
   transition: color .2s;
 }
@@ -486,94 +487,3 @@
   .cpro-addons { grid-template-columns: 1fr; }
   .cpro-price-val { font-size: 1.7rem; }
 }
-
-/* ============================================================
-   GLASSMORPHISM DARK THEME — All Solution Page Sections
-   ============================================================ */
-
-/* ── All sol-section backgrounds — dark base ── */
-.sol-section {
-  background: linear-gradient(180deg, #060d1f 0%, #0a1628 100%);
-  position: relative;
-}
-.sol-section:nth-child(even):not(.cpro-section) {
-  background: linear-gradient(180deg, #0a1628 0%, #060d1f 100%) !important;
-}
-
-/* Section headings on dark background */
-.sol-section h2 { color: #ffffff; }
-.sol-section .section-eyebrow {
-  color: rgba(255,255,255,.5) !important;
-  background: rgba(255,255,255,.07) !important;
-  border: 1px solid rgba(255,255,255,.1) !important;
-}
-
-/* ── FOR WHOM cards — glass ── */
-.sol-for-item {
-  background: rgba(255,255,255,.04) !important;
-  border: 1px solid rgba(255,255,255,.09) !important;
-  color: rgba(255,255,255,.8) !important;
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  transition: background .2s, border-color .2s, transform .2s;
-}
-.sol-for-item:hover {
-  background: rgba(255,255,255,.08) !important;
-  border-color: rgba(99,159,255,.3) !important;
-  transform: translateY(-2px);
-}
-.sol-for-icon { color: #60a5fa !important; }
-
-/* ── FEATURES cards — glass ── */
-.sol-features-section { background: linear-gradient(180deg, #0a1628 0%, #060d1f 100%) !important; }
-.sol-feature-item {
-  background: rgba(255,255,255,.04) !important;
-  border: 1px solid rgba(255,255,255,.08) !important;
-  color: rgba(255,255,255,.65) !important;
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  transition: background .2s, border-color .2s;
-}
-.sol-feature-item:hover {
-  background: rgba(255,255,255,.07) !important;
-  border-color: rgba(99,159,255,.25) !important;
-}
-.sf-check { color: #60a5fa !important; }
-
-/* ── PROCESS section — glass steps ── */
-.sol-process-section { background: linear-gradient(180deg, #060d1f 0%, #0a1628 100%) !important; }
-.sol-process-sub { color: rgba(255,255,255,.5) !important; }
-.sol-steps::before { background: rgba(255,255,255,.1) !important; }
-.sol-step-num {
-  background: rgba(255,255,255,.05) !important;
-  border-color: rgba(99,159,255,.4) !important;
-  color: #93c5fd !important;
-  box-shadow: 0 0 16px rgba(37,99,235,.2) !important;
-}
-.sol-step h3 { color: rgba(255,255,255,.9) !important; }
-.sol-step p { color: rgba(255,255,255,.45) !important; }
-
-/* ── RELATED cards — glass ── */
-.sol-related-section { background: linear-gradient(180deg, #0a1628 0%, #060d1f 100%) !important; }
-.sol-related-card {
-  background: rgba(255,255,255,.04) !important;
-  border: 1px solid rgba(255,255,255,.08) !important;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-}
-.sol-related-card:hover {
-  border-color: rgba(99,159,255,.35) !important;
-  box-shadow: 0 8px 28px rgba(37,99,235,.2) !important;
-  transform: translateY(-3px);
-}
-.src-title { color: rgba(255,255,255,.9) !important; }
-.src-price { color: #60a5fa !important; }
-
-/* ── PRICING section — already dark, minor tweaks ── */
-.sol-pricing-section { background: linear-gradient(145deg, #060d1f, #0a1628) !important; }
-.spc-right {
-  background: rgba(255,255,255,.06) !important;
-  border: 1px solid rgba(255,255,255,.1) !important;
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-}
-.spc-right h3 { color: rgba(255,255,255,.9) !important; }
-.spc-list li { color: rgba(255,255,255,.6) !important; }
-.spc-list li span:first-child { color: #60a5fa !important; }
-.spc-sub { color: rgba(255,255,255,.4) !important; }

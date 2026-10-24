@@ -429,7 +429,7 @@ function buildCalculatorHTML(key) {
   }).join('');
 
   return `
-<section class="sol-section cpro-section" id="pricingCalc" style="--sol-accent:${sol.accent}">
+<section class="sol-section cpro-section" id="pricingCalc" style="--sol-accent:${sol.accent}; background: linear-gradient(145deg, #060d1f 0%, #0a1628 50%, #060d1f 100%) !important;">
   <div class="sol-section-inner">
     <div class="section-eyebrow" style="color:rgba(255,255,255,.55)">Build Your Package</div>
     <div class="cpro-header-row">

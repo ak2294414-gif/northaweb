@@ -128,38 +128,3 @@
   .booking-info { position: static; }
   .booking-trust-row { gap: 1.2rem; }
 }
-
-/* ── GLASSMORPHISM DARK FIX — Booking Page ── */
-.booking-hero {
-  background: linear-gradient(135deg, #060d1f 0%, #0a1628 100%) !important;
-  position: relative; overflow: hidden;
-}
-.booking-hero::before {
-  content: '';
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 50% 60% at 80% 50%, rgba(37,99,235,.15) 0%, transparent 70%);
-}
-.booking-body {
-  background: linear-gradient(180deg, #0a1628 0%, #060d1f 100%) !important;
-}
-.booking-form-wrap, .booking-contact-col {
-  background: rgba(255,255,255,.05) !important;
-  border: 1px solid rgba(255,255,255,.1) !important;
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-}
-.booking-form label { color: rgba(255,255,255,.75) !important; }
-.booking-form input, .booking-form select, .booking-form textarea {
-  background: rgba(255,255,255,.06) !important;
-  border: 1.5px solid rgba(255,255,255,.12) !important;
-  color: rgba(255,255,255,.9) !important;
-}
-.booking-form input::placeholder, .booking-form textarea::placeholder {
-  color: rgba(255,255,255,.3) !important;
-}
-.booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
-  background: rgba(255,255,255,.09) !important;
-  border-color: rgba(99,159,255,.5) !important;
-  box-shadow: 0 0 0 3px rgba(37,99,235,.15) !important;
-}
-.booking-contact-item { color: rgba(255,255,255,.7) !important; }
-.booking-contact-item strong { color: rgba(255,255,255,.9) !important; }
