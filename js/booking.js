@@ -98,6 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
     clearErrors();
 
     const params       = new URLSearchParams(window.location.search);
+    // Spam bot honeypot check
+    const honeypot = document.getElementById("fhoneypot");
+    if (honeypot && honeypot.value.length > 0) return; // bot filled hidden field
+
     const name         = document.getElementById('fname').value.trim();
     const phone        = document.getElementById('fphone').value.trim();
     const biz          = document.getElementById('fbiz').value.trim();
@@ -149,11 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (result.success) {
       showSuccess(phone);
     } else {
+      errorEl.textContent = '⚠️ Something went wrong. Please try again, or WhatsApp us directly at +91 76379 13832.';
       errorEl.style.display = 'block';
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       submitBtn.disabled = false;
       submitBtn.innerHTML = `
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book Free Consultation`;
+        Try Again`;
     }
   });
 });

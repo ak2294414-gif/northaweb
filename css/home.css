@@ -215,7 +215,7 @@
 .final-cta-section { background: var(--bg-dark); padding: 5rem 6%; }
 .fcs-inner { text-align: center; max-width: 600px; margin: 0 auto; }
 .fcs-inner h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; color: var(--white); margin-bottom: .9rem; }
-.fcs-inner > p { color: rgba(255,255,255,.65); font-size: .97rem; line-height: 1.75; margin-bottom: 2rem; }
+.fcs-inner > p { color: rgba(255,255,255,.88); font-size: .97rem; line-height: 1.75; margin-bottom: 2rem; }
 .fcs-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .fcs-wa-btn {
   display: inline-flex; align-items: center; gap: .55rem;
