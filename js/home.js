@@ -40,7 +40,7 @@ const FAQ_DATA = [
   },
   {
     q: 'Will my website show up on Google?',
-    a: 'Every website we build includes basic on-page SEO — meta titles, descriptions, structured data (Schema), and a sitemap. This gives Google everything it needs to index your site. For ongoing ranking improvement, we have a dedicated SEO Add-On service.'
+    a: 'Every website includes a Google-friendly structure — proper meta tags, headings, sitemap, and Schema markup. This helps Google index your site correctly. However, ranking on top of Google requires a dedicated SEO plan, which is a separate paid service.'
   },
   {
     q: 'What happens after the website goes live?',
@@ -125,6 +125,19 @@ function renderFAQ() {
 
 /* ---------- SCROLL ANIMATIONS (Intersection Observer) ---------- */
 function initScrollAnimations() {
+  // Add anim-hidden to individual cards AFTER DOM is ready (not sections)
+  const CARD_SEL = [
+    '.sol-home-card', '.t-card', '.demo-card',
+    '.whyus-card', '.city-card', '.faq-item',
+    '.ps-item', '.av-stat', '.trust-badge',
+    '.compare-table tr', '.stat-block'
+  ].join(', ');
+
+  document.querySelectorAll(CARD_SEL).forEach((el, i) => {
+    el.classList.add('anim-hidden');
+    el.style.transitionDelay = (i % 8 * 55) + 'ms';
+  });
+
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {

@@ -3,14 +3,24 @@
    ============================================================ */
 
 /* ── Scroll Fade-In ── */
+/* Only cards get anim-hidden — never full sections */
 .anim-hidden {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .55s ease, transform .55s ease;
+  transform: translateY(22px);
+  transition: opacity .5s ease, transform .5s ease;
 }
 .anim-visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
+}
+/* Safety: if JS fails, everything still shows */
+section, main, .hero, .trust-section, .stats-section,
+.compare-section, .whyus-section, .demos-section,
+.about-section, .testimonials-section, .process-section,
+.faq-section, .city-section, .final-cta-section {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
 }
 
 /* ── Card Glow — CSS Custom Property approach (no offset bug) ── */
