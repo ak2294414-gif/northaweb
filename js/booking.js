@@ -1,8 +1,7 @@
 /* ============================================================
    NorthWeb Co. — Booking Page Logic
    File: js/booking.js
-   UPDATED: Plan lock when coming from a solution page
-   Depends on: sheets.js (NorthWebSheets.submitToSheets)
+   UPDATED: Reads calculator params from URL + saves to Sheets
    ============================================================ */
 
 /* ── Pre-fill + optional lock service from URL ── */
@@ -18,13 +17,37 @@ document.addEventListener('DOMContentLoaded', () => {
       opt.selected = true;
       if (locked) {
         sel.disabled = true;
-        // Show which plan is locked
         const lockNote = document.createElement('span');
         lockNote.className = 'field-lock-note';
         lockNote.textContent = '🔒 Pre-selected from your chosen plan';
         sel.parentNode.appendChild(lockNote);
       }
     }
+  }
+
+  // Show calculator summary if coming from pricing calculator
+  const setupPrice   = params.get('setup_price');
+  const monthlyPrice = params.get('monthly_price');
+  const products     = params.get('products');
+  const categories   = params.get('categories');
+  const seo          = params.get('seo');
+
+  if (setupPrice && monthlyPrice) {
+    const summaryBox = document.createElement('div');
+    summaryBox.className = 'calc-booking-summary';
+    summaryBox.innerHTML = `
+      <div class="cbs-title">📋 Your Selected Plan</div>
+      <div class="cbs-rows">
+        <div class="cbs-row"><span>One-time setup</span><strong>₹${parseInt(setupPrice).toLocaleString('en-IN')}</strong></div>
+        <div class="cbs-row"><span>Monthly maintenance</span><strong>₹${parseInt(monthlyPrice).toLocaleString('en-IN')}/mo</strong></div>
+        ${products ? `<div class="cbs-row"><span>Products</span><strong>${products}</strong></div>` : ''}
+        ${categories ? `<div class="cbs-row"><span>Categories</span><strong>${categories}</strong></div>` : ''}
+        ${seo === '1' ? `<div class="cbs-row"><span>Local SEO</span><strong>Included ✓</strong></div>` : ''}
+      </div>
+      <p class="cbs-note">We'll confirm this exact quote when Ankur calls you.</p>`;
+
+    const form = document.getElementById('bookingForm');
+    if (form) form.insertBefore(summaryBox, form.firstChild);
   }
 });
 
@@ -74,20 +97,26 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     clearErrors();
 
-    const name    = document.getElementById('fname').value.trim();
-    const phone   = document.getElementById('fphone').value.trim();
-    const biz     = document.getElementById('fbiz').value.trim();
-    const sel     = document.getElementById('fservice');
-    const service = sel ? sel.value : '';
-    const message = document.getElementById('fmsg').value.trim();
-    const consent = document.getElementById('consentCheck').checked;
+    const params       = new URLSearchParams(window.location.search);
+    const name         = document.getElementById('fname').value.trim();
+    const phone        = document.getElementById('fphone').value.trim();
+    const biz          = document.getElementById('fbiz').value.trim();
+    const sel          = document.getElementById('fservice');
+    const service      = sel ? sel.value : '';
+    const message      = document.getElementById('fmsg').value.trim();
+    const consent      = document.getElementById('consentCheck').checked;
+    const setupPrice   = params.get('setup_price') || '';
+    const monthlyPrice = params.get('monthly_price') || '';
+    const products     = params.get('products') || '';
+    const categories   = params.get('categories') || '';
+    const seo          = params.get('seo') === '1' ? 'Yes' : 'No';
 
     const errorEl   = document.getElementById('formError');
     const submitBtn = document.getElementById('submitBtn');
 
     let hasError = false;
 
-    if (!name) { setError('fname', 'err-name', 'Please enter your name.'); hasError = true; }
+    if (!name)  { setError('fname',    'err-name',    'Please enter your name.'); hasError = true; }
     if (!phone || phone.length !== 10) { setError('fphone', 'err-phone', 'Please enter a valid 10-digit WhatsApp number.'); hasError = true; }
     if (!service) { setError('fservice', 'err-service', 'Please select a service.'); hasError = true; }
     if (!consent) { const el = document.getElementById('err-consent'); if (el) el.textContent = 'Please agree to the Privacy Policy to continue.'; hasError = true; }
@@ -103,7 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     errorEl.style.display = 'none';
 
-    const result = await NorthWebSheets.submitToSheets({ name, phone, business: biz, service, message });
+    // Build message with calculator details if present
+    let fullMessage = message;
+    if (setupPrice) {
+      fullMessage += `\n[Calculator] Setup: ₹${setupPrice} | Monthly: ₹${monthlyPrice}/mo | Products: ${products} | Categories: ${categories} | SEO: ${seo}`;
+    }
+
+    const result = await NorthWebSheets.submitToSheets({
+      name,
+      phone,
+      business: biz,
+      service,
+      message: fullMessage
+    });
 
     if (result.success) {
       showSuccess(phone);
@@ -119,5 +160,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* Spinner keyframe */
 const _s = document.createElement('style');
-_s.textContent = `@keyframes spin { to { transform: rotate(360deg); } } .field-lock-note { display:block; font-size:.75rem; color:var(--blue); margin-top:.25rem; }`;
+_s.textContent = `
+@keyframes spin { to { transform: rotate(360deg); } }
+.field-lock-note { display:block; font-size:.75rem; color:var(--blue); margin-top:.25rem; }
+.calc-booking-summary {
+  background: #f0f7ff; border: 1.5px solid #bcd4f8; border-radius: 12px;
+  padding: 1.2rem 1.4rem; margin-bottom: 1.5rem;
+}
+.cbs-title { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.92rem; margin-bottom:.8rem; color:#0052CC; }
+.cbs-rows { display:flex; flex-direction:column; gap:.4rem; }
+.cbs-row { display:flex; justify-content:space-between; font-size:.85rem; color:#444; }
+.cbs-row strong { color:#111; }
+.cbs-note { font-size:.75rem; color:#666; margin-top:.8rem; margin-bottom:0; }
+`;
 document.head.appendChild(_s);

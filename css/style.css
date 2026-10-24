@@ -196,3 +196,12 @@ footer {
   .footer-bottom { flex-direction: column; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+
+/* Mandatory badge in pricing */
+.spc-mandatory {
+  display: inline-block; font-size: .62rem; font-weight: 700;
+  background: #dc2626; color: white;
+  border-radius: 99px; padding: .1rem .45rem;
+  text-transform: uppercase; letter-spacing: .04em;
+  vertical-align: middle; margin-left: .35rem;
+}
