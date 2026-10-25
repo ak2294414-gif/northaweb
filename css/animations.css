@@ -1,0 +1,211 @@
+/* ============================================================
+   NorthWeb Co. — Animations & Effects
+   ============================================================ */
+
+/* ── Scroll Fade-In ── */
+.anim-hidden {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.anim-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ── Card Cursor Glow ── */
+.sol-home-card, .t-card, .demo-card, .cpro-card, .faq-item, .city-card {
+  position: relative;
+  overflow: hidden;
+}
+.sol-home-card::after, .t-card::after, .demo-card::after,
+.faq-item::after, .city-card::after {
+  content: '';
+  position: absolute;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,82,204,.12) 0%, transparent 70%);
+  left: var(--gx, 50%); top: var(--gy, 50%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.sol-home-card.glow-active::after, .t-card.glow-active::after,
+.demo-card.glow-active::after, .faq-item.glow-active::after,
+.city-card.glow-active::after { opacity: 1; }
+
+/* ── Scroll Progress Bar ── */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, #0052CC, #2563EB);
+  transition: width .1s linear;
+  pointer-events: none;
+}
+
+/* ── Back to Top ── */
+#back-to-top {
+  position: fixed; bottom: 5.5rem; right: 1.3rem; z-index: 800;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  border: none; font-size: 1.1rem; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 16px rgba(0,82,204,.3);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity .3s, transform .3s;
+  pointer-events: none;
+}
+#back-to-top.visible {
+  opacity: 1; transform: translateY(0);
+  pointer-events: auto;
+}
+#back-to-top:hover { background: var(--blue-d); transform: translateY(-2px); }
+
+/* ── FAQ Accordion ── */
+.faq-section { padding: 4.5rem 6%; background: var(--bg); }
+.faq-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: .7rem; }
+.faq-item {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.faq-item:hover { border-color: var(--blue); box-shadow: var(--shadow-s); }
+.faq-q {
+  width: 100%; background: none; border: none;
+  padding: 1.1rem 1.4rem; text-align: left;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .95rem;
+  font-weight: 700; color: var(--text); cursor: pointer; gap: 1rem;
+}
+.faq-icon {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--blue-l); color: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; flex-shrink: 0;
+  transition: transform .3s, background .2s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--blue); color: #fff; }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s ease;
+  font-size: .9rem; color: var(--text-mid); line-height: 1.75;
+  padding: 0 1.4rem;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 1.4rem 1.2rem; }
+
+/* ── Comparison Table ── */
+.compare-section { padding: 4.5rem 6%; background: var(--white); }
+.compare-table { width: 100%; border-collapse: collapse; max-width: 820px; margin: 0 auto; font-size: .88rem; }
+.compare-table th {
+  padding: .9rem 1.2rem; font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: .82rem;
+  text-align: center; border-bottom: 2px solid var(--border);
+}
+.compare-table th:first-child { text-align: left; }
+.compare-table th.col-us { background: var(--blue-l); color: var(--blue); border-radius: 8px 8px 0 0; }
+.compare-table td {
+  padding: .85rem 1.2rem; border-bottom: 1px solid var(--border);
+  text-align: center; color: var(--text-mid);
+}
+.compare-table td:first-child { text-align: left; font-weight: 600; color: var(--text); }
+.compare-table td.col-us { background: rgba(0,82,204,.04); font-weight: 700; color: var(--blue); }
+.compare-table tr:last-child td { border: none; }
+.cmp-yes { color: #16A34A; font-size: 1.1rem; }
+.cmp-no  { color: #DC2626; font-size: 1.1rem; }
+.cmp-maybe { color: #D97706; font-size: 1rem; }
+
+/* ── Urgency Banner ── */
+#urgency-banner {
+  background: linear-gradient(90deg, #1E3A8A 0%, #0052CC 100%);
+  color: #fff; text-align: center;
+  padding: .6rem 6%; font-size: .84rem; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; gap: .8rem;
+  position: relative; z-index: 99;
+}
+#urgency-banner a { color: #FDE68A; text-decoration: underline; }
+.urgency-close {
+  position: absolute; right: 1.2rem;
+  background: none; border: none; color: rgba(255,255,255,.6);
+  font-size: 1.2rem; cursor: pointer; padding: 0;
+}
+
+/* ── Trust Badges ── */
+.trust-section { padding: 2.5rem 6%; background: var(--bg); border-top: 1px solid var(--border); }
+.trust-inner { display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.trust-badge {
+  display: flex; align-items: center; gap: .55rem;
+  font-size: .82rem; font-weight: 600; color: var(--text-mid);
+}
+.trust-badge-icon { font-size: 1.2rem; }
+
+/* ── City Pages ── */
+.city-section { padding: 4.5rem 6%; background: var(--white); }
+.city-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.city-card {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 1.3rem;
+  text-decoration: none; color: inherit;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  display: flex; flex-direction: column; gap: .4rem;
+}
+.city-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-m); border-color: var(--blue); }
+.city-icon { font-size: 1.5rem; }
+.city-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: .95rem; color: var(--text); }
+.city-desc { font-size: .8rem; color: var(--text-soft); }
+.city-link { font-size: .8rem; font-weight: 600; color: var(--blue); margin-top: auto; }
+
+/* ── Stats Counter Section ── */
+.stats-section {
+  padding: 3rem 6%;
+  background: var(--blue);
+}
+.stats-inner {
+  display: flex; justify-content: center; align-items: center;
+  gap: 0; flex-wrap: wrap; max-width: 900px; margin: 0 auto;
+}
+.stat-block {
+  flex: 1; min-width: 160px; text-align: center;
+  padding: 1.2rem 2rem;
+  border-right: 1px solid rgba(255,255,255,.2);
+}
+.stat-block:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2.2rem; font-weight: 800; color: #fff;
+  display: block; line-height: 1.1;
+}
+.stat-label { font-size: .8rem; color: rgba(255,255,255,.75); margin-top: .3rem; }
+
+/* ── Why Us Section ── */
+.whyus-section { padding: 4.5rem 6%; background: var(--bg); }
+.whyus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.whyus-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 1.5rem;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.whyus-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-m); border-color: var(--blue); }
+.whyus-icon { font-size: 1.8rem; margin-bottom: .7rem; display: block; }
+.whyus-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: .97rem; margin-bottom: .4rem; color: var(--text); }
+.whyus-desc { font-size: .84rem; color: var(--text-soft); line-height: 1.65; }
+
+/* ── Offer Banner ── */
+.offer-banner {
+  margin: 0 6% 2rem;
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+  border: 1.5px solid #F59E0B;
+  border-radius: 14px; padding: 1.1rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.ob-text { flex: 1; font-size: .9rem; font-weight: 600; color: #92400E; }
+.ob-cta { background: #D97706; color: #fff; padding: .5rem 1.2rem; border-radius: 8px; font-size: .85rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.ob-cta:hover { background: #B45309; }
+
+@media (max-width: 600px) {
+  .stats-inner { gap: 0; }
+  .stat-block { min-width: 45%; border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .stat-block:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.2); }
+  .compare-table { font-size: .78rem; }
+  .compare-table th, .compare-table td { padding: .6rem .7rem; }
+  .city-grid { grid-template-columns: 1fr 1fr; }
+}
