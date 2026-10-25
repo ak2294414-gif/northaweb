@@ -364,7 +364,7 @@ function calcRender() {
 
   if (btnEl) {
     const p = new URLSearchParams({ service: key, locked: '1', setup_price: totalSetup, monthly_price: totalMonthly });
-    btnEl.href = `../../pages/booking.html?${p}`;
+    btnEl.href = `pages/booking.html?${p}`;
   }
 }
 
@@ -429,7 +429,7 @@ function buildCalculatorHTML(key) {
   }).join('');
 
   return `
-<section class="sol-section cpro-section" id="pricingCalc" style="--sol-accent:${sol.accent}">
+<section class="sol-section cpro-section" id="pricingCalc" style="--sol-accent:${sol.accent}; background: linear-gradient(145deg, #060d1f 0%, #0a1628 50%, #060d1f 100%) !important;">
   <div class="sol-section-inner">
     <div class="section-eyebrow" style="color:rgba(255,255,255,.55)">Build Your Package</div>
     <div class="cpro-header-row">
@@ -472,7 +472,7 @@ function buildCalculatorHTML(key) {
           </ul>
 
           <a class="btn-primary cpro-cta" id="cr-book-btn"
-            href="../../pages/booking.html?service=${key}&locked=1">
+            href="pages/booking.html?service=${key}&locked=1">
             Book Free Consultation →
           </a>
           <p class="cpro-footnote">No payment now · Ankur replies in 24 hrs</p>
@@ -508,19 +508,19 @@ function renderSolutionPage(key) {
   const bc = document.getElementById('breadcrumb-root');
   if (bc) bc.innerHTML = `
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <span><a href="../../index.html">Home</a></span>
-      <span><a href="../../index.html#solutions">Solutions</a></span>
+      <span><a href="index.html">Home</a></span>
+      <span><a href="index.html#solutions">Solutions</a></span>
       <span>${s.title}</span>
     </nav>`;
 
-  const bookingBase = '../../pages/booking.html';
+  const bookingBase = 'pages/booking.html';
   const demoBtn = s.demo
     ? `<a href="${s.demo}" target="_blank" rel="noopener noreferrer" class="btn-secondary sol-demo-btn">View Live Demo ↗</a>`
     : `<span class="sol-demo-soon">Demo coming soon</span>`;
 
   const relatedHTML = s.related.map(r => {
     const rel = SOLUTIONS[r]; if (!rel) return '';
-    return `<a href="${r}.html" class="sol-related-card">
+    return `<a href="pages/solutions/${r}.html" class="sol-related-card">
       <span class="src-icon">${rel.icon}</span>
       <span class="src-title">${rel.title}</span>
       <span class="src-price">From ${rel.setup || rel.monthly}</span>
@@ -612,7 +612,7 @@ ${hasCalc ? buildCalculatorHTML(key) : `
     <h2>Other website solutions</h2>
     <div class="sol-related-grid">${relatedHTML}</div>
     <div style="text-align:center;margin-top:2rem">
-      <a href="../../index.html#solutions" class="btn-secondary">See All 12 Solutions →</a>
+      <a href="index.html#solutions" class="btn-secondary">See All 12 Solutions →</a>
     </div>
   </div>
 </section>`;

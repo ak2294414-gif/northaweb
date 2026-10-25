@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#060d1f"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#060d1f"/>
+    </linearGradient>
+  </defs>
+  <!-- Logo box -->
+  <rect x="74" y="60" width="72" height="72" rx="16" fill="#0052CC"/>
+  <text x="110" y="113" font-family="Arial,sans-serif" font-size="48" font-weight="900" fill="white" text-anchor="middle">N</text>
+  <!-- Brand name -->
+  <text x="74" y="196" font-family="Arial,sans-serif" font-size="56" font-weight="800" fill="white">NorthWeb <tspan fill="#3B82F6">Co.</tspan></text>
+  <!-- Tagline -->
+  <text x="74" y="260" font-family="Arial,sans-serif" font-size="28" fill="#94a3b8">Website Design for Local Businesses in Northeast India</text>
+  <!-- Divider -->
+  <line x1="74" y1="300" x2="400" y2="300" stroke="#1e3a5f" stroke-width="2"/>
+  <!-- Stats -->
+  <text x="74" y="350" font-family="Arial,sans-serif" font-size="22" fill="#64748b">Starting from</text>
+  <text x="74" y="395" font-family="Arial,sans-serif" font-size="48" font-weight="800" fill="#3B82F6">₹6,000</text>
+  <text x="74" y="435" font-family="Arial,sans-serif" font-size="22" fill="#64748b">· Free WhatsApp Consultation</text>
+  <!-- Domain -->
+  <text x="74" y="560" font-family="Arial,sans-serif" font-size="24" fill="#475569">northwebco.shop</text>
+  <!-- Right side decorative -->
+  <rect x="750" y="80" width="380" height="220" rx="16" fill="#0d1f3c" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="770" y="120" font-family="Arial,sans-serif" font-size="13" fill="#64748b">northwebco.shop</text>
+  <rect x="770" y="140" width="320" height="48" rx="8" fill="#0f2847"/>
+  <text x="790" y="170" font-family="Arial,sans-serif" font-size="14" fill="#94a3b8">New Enquiry</text>
+  <rect x="980" y="150" width="90" height="26" rx="13" fill="#052e16"/>
+  <text x="1025" y="167" font-family="Arial,sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">Received ✓</text>
+  <rect x="770" y="198" width="320" height="48" rx="8" fill="#0f2847"/>
+  <text x="790" y="228" font-family="Arial,sans-serif" font-size="14" fill="#94a3b8">Website Status</text>
+  <rect x="970" y="208" width="100" height="26" rx="13" fill="#052e16"/>
+  <text x="1020" y="225" font-family="Arial,sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">Live 🟢</text>
+  <rect x="770" y="256" width="320" height="48" rx="8" fill="#0f2847"/>
+  <text x="790" y="286" font-family="Arial,sans-serif" font-size="14" fill="#94a3b8">Google Ranking</text>
+  <rect x="960" y="266" width="110" height="26" rx="13" fill="#1c1003"/>
+  <text x="1015" y="283" font-family="Arial,sans-serif" font-size="12" fill="#f59e0b" text-anchor="middle">Top 3 📈</text>
+  <!-- Service badges -->
+  <rect x="750" y="330" width="140" height="40" rx="20" fill="#0d1f3c" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="820" y="355" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">✅ Custom Code</text>
+  <rect x="905" y="330" width="130" height="40" rx="20" fill="#0d1f3c" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="970" y="355" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">📱 Mobile First</text>
+  <rect x="750" y="385" width="130" height="40" rx="20" fill="#0d1f3c" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="815" y="410" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">🔍 SEO Ready</text>
+  <rect x="895" y="385" width="140" height="40" rx="20" fill="#0d1f3c" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="965" y="410" font-family="Arial,sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">⚡ Fast Loading</text>
+</svg>
