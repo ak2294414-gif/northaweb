@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Show calculator summary if coming from pricing calculator
   const setupPrice   = params.get('setup_price');
   const monthlyPrice = params.get('monthly_price');
+  const addons       = params.get('addons');
   const products     = params.get('products');
   const categories   = params.get('categories');
   const seo          = params.get('seo');
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="cbs-rows">
         <div class="cbs-row"><span>One-time setup</span><strong>₹${parseInt(setupPrice).toLocaleString('en-IN')}</strong></div>
         <div class="cbs-row"><span>Monthly maintenance</span><strong>₹${parseInt(monthlyPrice).toLocaleString('en-IN')}/mo</strong></div>
+        ${addons && addons !== 'Base plan only' ? `<div class="cbs-row cbs-addons"><span>Add-ons</span><strong>${addons}</strong></div>` : ''}
         ${products ? `<div class="cbs-row"><span>Products</span><strong>${products}</strong></div>` : ''}
         ${categories ? `<div class="cbs-row"><span>Categories</span><strong>${categories}</strong></div>` : ''}
         ${seo === '1' ? `<div class="cbs-row"><span>Local SEO</span><strong>Included ✓</strong></div>` : ''}
@@ -107,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const consent      = document.getElementById('consentCheck').checked;
     const setupPrice   = params.get('setup_price') || '';
     const monthlyPrice = params.get('monthly_price') || '';
+    const addons       = params.get('addons') || '';
     const products     = params.get('products') || '';
     const categories   = params.get('categories') || '';
     const seo          = params.get('seo') === '1' ? 'Yes' : 'No';
@@ -132,18 +135,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     errorEl.style.display = 'none';
 
-    // Build message with calculator details if present
-    let fullMessage = message;
-    if (setupPrice) {
-      fullMessage += `\n[Calculator] Setup: ₹${setupPrice} | Monthly: ₹${monthlyPrice}/mo | Products: ${products} | Categories: ${categories} | SEO: ${seo}`;
+    // Build addons summary: prefer new 'addons' param; fall back to legacy params
+    let addonsSummary = addons || '';
+    if (!addonsSummary && (products || categories || seo === 'Yes')) {
+      const parts = [];
+      if (products)      parts.push(`Products: ${products}`);
+      if (categories)    parts.push(`Categories: ${categories}`);
+      if (seo === 'Yes') parts.push('Local SEO: Yes');
+      addonsSummary = parts.join(' | ');
     }
 
     const result = await NorthWebSheets.submitToSheets({
       name,
       phone,
-      business: biz,
+      business:     biz,
       service,
-      message: fullMessage
+      setup_fee:    setupPrice   ? `₹${parseInt(setupPrice).toLocaleString('en-IN')}` : '',
+      monthly_fee:  monthlyPrice ? `₹${parseInt(monthlyPrice).toLocaleString('en-IN')}/mo` : '',
+      addons:       addonsSummary,
+      message
     });
 
     if (result.success) {

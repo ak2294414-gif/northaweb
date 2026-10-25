@@ -363,7 +363,15 @@ function calcRender() {
     : '<li>Base plan — no add-ons selected</li>';
 
   if (btnEl) {
-    const p = new URLSearchParams({ service: key, locked: '1', setup_price: totalSetup, monthly_price: totalMonthly });
+    // Build a compact addons summary for the URL
+    const addonsSummary = lines.length ? lines.join(' | ') : 'Base plan only';
+    const p = new URLSearchParams({
+      service:       key,
+      locked:        '1',
+      setup_price:   totalSetup,
+      monthly_price: totalMonthly,
+      addons:        addonsSummary
+    });
     btnEl.href = `/pages/booking.html?${p}`;
   }
 }

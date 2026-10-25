@@ -2,23 +2,29 @@
    NorthWeb Co. — Google Sheets Integration
    File: js/sheets.js
    FIXED: Uses hidden form/iframe — bypasses CORS completely
+   v5: Added setup_fee, monthly_fee, addons columns
    ============================================================
 
    SETUP CHECKLIST (one time only):
    1. Google Sheet खोलो → Extensions → Apps Script
-   2. setupSheet() function Run करो — "Appointments" tab बनेगा
-   3. Deploy → Manage deployments → Active रखो
+   2. नीचे दिया गया Apps Script paste करो (sheets-appscript.js)
+   3. setupSheet() function Run करो — "Appointments" tab बनेगा
+   4. Deploy → New deployment → Web App → Execute as: Me → Anyone
+   5. Deployment URL copy करो और SHEETS_CONFIG.url में paste करो
    ============================================================ */
 
 const SHEETS_CONFIG = {
-  url: 'https://script.google.com/macros/s/AKfycbwvrfSEW6n7D2ct8ygKSOvs2cq7STGFElr9QteA6gR54luE2sdxmI0nRaJQLwsV8uywvA/exec',
-  fields: ['name', 'phone', 'business', 'service', 'message']
+  url: 'https://script.google.com/macros/s/AKfycbwI97BLtEbZXlh26ncUDkHH07nzGjoGXOjQJvf-8CuYkgIvL_R4_3jE6FB6fOaI0jIo6g/exec',
+  fields: ['name', 'phone', 'business', 'service', 'setup_fee', 'monthly_fee', 'addons', 'message']
 };
 
 /**
  * Submit via hidden form + iframe — 100% reliable with Apps Script.
  * No CORS issues. Form submissions bypass CORS restrictions entirely.
  * Apps Script receives full POST data including e.parameter fields.
+ *
+ * formData expected shape:
+ *   { name, phone, business, service, setup_fee, monthly_fee, addons, message }
  */
 async function submitToSheets(formData) {
   if (!SHEETS_CONFIG.url || SHEETS_CONFIG.url.includes('PASTE_YOUR')) {
