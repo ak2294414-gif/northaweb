@@ -1,3 +1,0 @@
-# Netlify redirects for NorthWeb Co.
-# 404 handler only — do NOT use wildcard redirect or all pages break
-/404    /404.html   404
