@@ -11,7 +11,7 @@
    ============================================================ */
 
 const SHEETS_CONFIG = {
-  url: 'https://script.google.com/macros/s/AKfycby1zMO4yLLVk583E2QEkefGRq54rjDofrSPl-4WdyRYxdqjxMSZJIQKVTz-9-9O_eBZ/exec',
+  url: 'https://script.google.com/macros/s/AKfycbwvrfSEW6n7D2ct8ygKSOvs2cq7STGFElr9QteA6gR54luE2sdxmI0nRaJQLwsV8uywvA/exec',
   fields: ['name', 'phone', 'business', 'service', 'message']
 };
 
