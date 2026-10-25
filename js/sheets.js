@@ -14,7 +14,7 @@
    ============================================================ */
 
 const SHEETS_CONFIG = {
-  url: 'https://script.google.com/macros/s/AKfycbwI97BLtEbZXlh26ncUDkHH07nzGjoGXOjQJvf-8CuYkgIvL_R4_3jE6FB6fOaI0jIo6g/exec',
+  url: 'https://script.google.com/macros/s/AKfycbzcyG-iS8JB-X2vYNflLFHz6a0JNyHxGenE61JVZIeOl-rhbFMpPh7ALwWPRcpLJdP3dQ/exec',
   fields: ['name', 'phone', 'business', 'service', 'setup_fee', 'monthly_fee', 'addons', 'message']
 };
 
