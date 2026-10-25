@@ -508,8 +508,8 @@ function renderSolutionPage(key) {
   const bc = document.getElementById('breadcrumb-root');
   if (bc) bc.innerHTML = `
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <span><a href="index.html">Home</a></span>
-      <span><a href="index.html#solutions">Solutions</a></span>
+      <span><a href="/index.html">Home</a></span>
+      <span><a href="/index.html#solutions">Solutions</a></span>
       <span>${s.title}</span>
     </nav>`;
 
@@ -612,7 +612,7 @@ ${hasCalc ? buildCalculatorHTML(key) : `
     <h2>Other website solutions</h2>
     <div class="sol-related-grid">${relatedHTML}</div>
     <div style="text-align:center;margin-top:2rem">
-      <a href="index.html#solutions" class="btn-secondary">See All 12 Solutions →</a>
+      <a href="/index.html#solutions" class="btn-secondary">See All 12 Solutions →</a>
     </div>
   </div>
 </section>`;

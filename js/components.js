@@ -4,10 +4,10 @@
    ============================================================ */
 
 const NAV_LINKS = [
-  { label: 'Solutions',  href: 'index.html#solutions' },
-  { label: 'Process',    href: 'index.html#process' },
-  { label: 'Demos',      href: 'index.html#demos' },
-  { label: 'Book Now',   href: 'pages/booking.html', highlight: true },
+  { label: 'Solutions',  href: '/index.html#solutions' },
+  { label: 'Process',    href: '/index.html#process' },
+  { label: 'Demos',      href: '/index.html#demos' },
+  { label: 'Book Now',   href: '/pages/booking.html', highlight: true },
 ];
 
 const WA_NUMBER  = '917637913832';
@@ -28,7 +28,7 @@ function renderNav(activePage) {
   const html = `
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="logo" aria-label="NorthWeb Co. home">NorthWeb <span>Co.</span></a>
+  <a href="/index.html" class="logo" aria-label="NorthWeb Co. home">NorthWeb <span>Co.</span></a>
   <ul class="nav-links" id="navLinks" role="menubar">${linksHTML}</ul>
   <div class="nav-actions">
     <a href="https://wa.me/${WA_NUMBER}" class="nav-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
@@ -66,34 +66,34 @@ function renderFooter() {
 <footer role="contentinfo">
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="index.html" class="logo footer-logo" aria-label="NorthWeb Co. home">NorthWeb <span>Co.</span></a>
+      <a href="/index.html" class="logo footer-logo" aria-label="NorthWeb Co. home">NorthWeb <span>Co.</span></a>
       <p>Professional websites for local businesses across Northeast India. Built by Ankur.</p>
     </div>
     <div class="footer-col">
       <h4>Solutions</h4>
       <ul>
-        <li><a href="pages/solutions/showcase.html">Collection Showcase</a></li>
-        <li><a href="pages/solutions/ecommerce.html">D2C E-commerce</a></li>
-        <li><a href="pages/solutions/restaurant.html">Restaurant / Cafe</a></li>
-        <li><a href="pages/solutions/business.html">Business / Corporate</a></li>
-        <li><a href="index.html#solutions">All 12 Solutions →</a></li>
+        <li><a href="/pages/solutions/showcase.html">Collection Showcase</a></li>
+        <li><a href="/pages/solutions/ecommerce.html">D2C E-commerce</a></li>
+        <li><a href="/pages/solutions/restaurant.html">Restaurant / Cafe</a></li>
+        <li><a href="/pages/solutions/business.html">Business / Corporate</a></li>
+        <li><a href="/index.html#solutions">All 12 Solutions →</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <ul>
-        <li><a href="index.html#demos">Live Demos</a></li>
-        <li><a href="index.html#process">Our Process</a></li>
-        <li><a href="pages/booking.html">Book a Consultation</a></li>
+        <li><a href="/index.html#demos">Live Demos</a></li>
+        <li><a href="/index.html#process">Our Process</a></li>
+        <li><a href="/pages/booking.html">Book a Consultation</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Legal</h4>
       <ul>
-        <li><a href="pages/policies.html#privacy">Privacy Policy</a></li>
-        <li><a href="pages/policies.html#terms">Terms of Service</a></li>
-        <li><a href="pages/policies.html#refund">Refund Policy</a></li>
-        <li><a href="pages/policies.html#cookie">Cookie Policy</a></li>
+        <li><a href="/pages/policies.html#privacy">Privacy Policy</a></li>
+        <li><a href="/pages/policies.html#terms">Terms of Service</a></li>
+        <li><a href="/pages/policies.html#refund">Refund Policy</a></li>
+        <li><a href="/pages/policies.html#cookie">Cookie Policy</a></li>
         <li><a href="https://wa.me/${WA_NUMBER}?text=I+want+to+request+deletion+of+my+data" target="_blank" rel="noopener noreferrer">Data Deletion Request</a></li>
       </ul>
     </div>
@@ -102,8 +102,8 @@ function renderFooter() {
     <span>© ${new Date().getFullYear()} NorthWeb Co. · Ankur · Northeast India · <a href="mailto:${EMAIL}">${EMAIL}</a></span>
     <span>
       <a href="https://wa.me/${WA_NUMBER}" target="_blank" rel="noopener noreferrer">WhatsApp: ${WA_DISPLAY}</a>
-      &nbsp;·&nbsp;<a href="pages/policies.html">Privacy</a>
-      &nbsp;·&nbsp;<a href="pages/policies.html#terms">Terms</a>
+      &nbsp;·&nbsp;<a href="/pages/policies.html">Privacy</a>
+      &nbsp;·&nbsp;<a href="/pages/policies.html#terms">Terms</a>
     </span>
   </div>
 </footer>
@@ -119,7 +119,7 @@ function renderFooter() {
 function renderCookieBanner() {
   const html = `
 <div id="cookieBanner" role="dialog" aria-label="Cookie consent">
-  <span>We use cookies to improve your experience. See our <a href="pages/policies.html#cookie">Cookie Policy</a>.</span>
+  <span>We use cookies to improve your experience. See our <a href="/pages/policies.html#cookie">Cookie Policy</a>.</span>
   <div class="cookie-actions">
     <button class="cookie-btn decline" onclick="dismissCookie('decline')">Decline</button>
     <button class="cookie-btn accept"  onclick="dismissCookie('accept')">Accept</button>
