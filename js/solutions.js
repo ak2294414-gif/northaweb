@@ -364,7 +364,7 @@ function calcRender() {
 
   if (btnEl) {
     const p = new URLSearchParams({ service: key, locked: '1', setup_price: totalSetup, monthly_price: totalMonthly });
-    btnEl.href = `pages/booking.html?${p}`;
+    btnEl.href = `/pages/booking.html?${p}`;
   }
 }
 
@@ -472,7 +472,7 @@ function buildCalculatorHTML(key) {
           </ul>
 
           <a class="btn-primary cpro-cta" id="cr-book-btn"
-            href="pages/booking.html?service=${key}&locked=1">
+            href="/pages/booking.html?service=${key}&locked=1">
             Book Free Consultation →
           </a>
           <p class="cpro-footnote">No payment now · Ankur replies in 24 hrs</p>
@@ -513,7 +513,7 @@ function renderSolutionPage(key) {
       <span>${s.title}</span>
     </nav>`;
 
-  const bookingBase = 'pages/booking.html';
+  const bookingBase = '/pages/booking.html';
   const demoBtn = s.demo
     ? `<a href="${s.demo}" target="_blank" rel="noopener noreferrer" class="btn-secondary sol-demo-btn">View Live Demo ↗</a>`
     : `<span class="sol-demo-soon">Demo coming soon</span>`;
