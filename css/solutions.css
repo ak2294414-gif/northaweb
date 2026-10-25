@@ -99,6 +99,17 @@
 
 /* ── PROCESS ── */
 /* process section */ .sol-section.sol-process-section { background: var(--bg); }
+
+/* FAQ section */
+.faq-list { display: flex; flex-direction: column; gap: 1rem; max-width: 820px; }
+.faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem 1.6rem; }
+.faq-q { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: .6rem; }
+.faq-ans { font-size: .92rem; color: var(--text-mid); line-height: 1.7; }
+
+/* Why section — force light bg so text is visible */
+.sol-section.sol-why-section { background: var(--bg); }
+.sol-section.sol-why-section h2,
+.sol-section.sol-why-section .section-eyebrow { color: var(--text); }
 .sol-process-sub { color: var(--text-mid); font-size: .95rem; margin-bottom: 2rem; }
 .sol-steps {
   display: grid; grid-template-columns: repeat(5, 1fr); gap: .8rem;
