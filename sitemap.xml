@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://northwebco.shop/</loc><lastmod>2026-10-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://northwebco.shop/pages/booking.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/cities/guwahati.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/cities/dibrugarh.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/cities/silchar.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/showcase.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/ecommerce.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/restaurant.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/business.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/portfolio.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/realestate.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/education.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/gym.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/salon.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/medical.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/event.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/hotel.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/solutions/seo.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://northwebco.shop/pages/seo/restaurant-website-design-guwahati.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/seo/hotel-website-design-assam.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/seo/ecommerce-website-assam.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/seo/freelance-web-developer-guwahati.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/seo/affordable-website-design-northeast-india.html</loc><lastmod>2026-10-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://northwebco.shop/pages/policies.html</loc><lastmod>2026-10-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- Core pages -->
+  <url><loc>https://northwebco.shop/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://northwebco.shop/pages/booking.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Solution pages -->
+  <url><loc>https://northwebco.shop/pages/solutions/showcase.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/ecommerce.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/restaurant.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/business.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/portfolio.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/realestate.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/education.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/gym.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/salon.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/medical.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/event.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/solutions/hotel.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- City pages -->
+  <url><loc>https://northwebco.shop/pages/cities/guwahati.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/cities/dibrugarh.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/cities/silchar.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- SEO landing pages — original -->
+  <url><loc>https://northwebco.shop/pages/seo/restaurant-website-design-guwahati.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/hotel-website-design-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/ecommerce-website-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/freelance-web-developer-guwahati.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/affordable-website-design-northeast-india.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- SEO landing pages — new -->
+  <url><loc>https://northwebco.shop/pages/seo/salon-website-design-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/clinic-website-design-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/gym-website-design-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/business-website-design-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/education-website-design-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/realestate-website-design-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/event-wedding-website-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/portfolio-website-design-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/website-design-dibrugarh.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/website-design-silchar.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/web-designer-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/local-seo-assam.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://northwebco.shop/pages/seo/restaurant-website-design-dibrugarh.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
 </urlset>
